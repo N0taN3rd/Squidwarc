@@ -45,6 +45,8 @@ More information about this terminology can be found via [ws-dl.blogspot.com](ht
 
 # Usage
 
+Run `npm install` or `yarn` before continuing in order to install the dependencies for this project.   
+
 There are two shell scripts provided to help you use the project at the current stage.
 
 ### run-chrome.sh   
