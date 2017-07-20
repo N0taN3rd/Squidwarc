@@ -1,8 +1,8 @@
 {
-  "name": "chromeHeadless",
-  "version": "1.0.0",
-  "main": "saveMeAPage.js",
-  "license": "MIT",
+  "name": "squid-crawler",
+  "version": "1.0.2",
+  "main": "index.js",
+  "license": "GPL-3.0",
   "scripts": {
     "lint": "standard | snazzy",
     "lint-fix": "standard --fix"

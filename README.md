@@ -1,4 +1,5 @@
 # Squid
+[![npm Package](https://img.shields.io/npm/v/squid-crawler.svg?style=flat-square)](https://www.npmjs.com/package/squid-crawler)
 
 Squid is a high fidelity archival crawler that uses Chrome or Chrome Headless.
 
@@ -108,3 +109,4 @@ The `config.json` file example below is provided beside the two shell scripts wi
  "scroll": 4000
 }
 ```
+[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
