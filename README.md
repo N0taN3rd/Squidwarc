@@ -1,12 +1,12 @@
 # Squidwarc
 [![npm Package](https://img.shields.io/npm/v/squid-crawler.svg?style=flat-square)](https://www.npmjs.com/package/squid-crawler)
 
-Squidwarc is a high fidelity archival crawler that uses Chrome or Chrome Headless.
+`Squidwarc` is a high fidelity archival crawler that uses Chrome or Chrome Headless.
 
 `Squidwarc` aims to address the need for a high fidelity crawler akin to Heritrix while still
 easy enough for the personal archivist to setup and use.
 
-Squid does not seek (at the moment) to dethrone Heritrix as the king of wide archival crawls rather
+`Squidwarc` does not seek (at the moment) to dethrone Heritrix as the king of wide archival crawls rather
 seeks to address Heritrix's short comings namely
 - No JavaScript execution
 - Everything is plain text
