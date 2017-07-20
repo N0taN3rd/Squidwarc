@@ -1,0 +1,17 @@
+{
+  "mode": "page-only",
+  "seeds": [
+    "http://acid.matkelly.com"
+  ],
+  "warc": {
+    "naming": "url"
+  },
+  "connect": {
+    "host": "localhost",
+    "port": 9222
+  },
+  "timeouts": {
+    "navigationTimeout": 8000,
+    "waitAfterLoad": 7000
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "chromeHeadless",
+  "version": "1.0.0",
+  "main": "saveMeAPage.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "standard | snazzy",
+    "lint-fix": "standard --fix"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "chalk": "^2.0.1",
+    "chrome-remote-interface": "^0.24.2",
+    "commander": "^2.11.0",
+    "eventemitter3": "^2.0.3",
+    "filenamify-url": "^1.0.0",
+    "fs-extra": "^4.0.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "normalize-url": "^1.9.1",
+    "parse-domain": "^1.1.0",
+    "pretty-error": "^2.1.1",
+    "pretty-ms": "^3.0.0",
+    "ramda": "^0.24.1",
+    "remote-dom": "^0.0.3",
+    "string": "^3.3.3",
+    "uuid": "^3.1.0",
+    "validator": "^8.0.0",
+    "yargs": "^8.0.2"
+  },
+  "devDependencies": {
+    "benchmark": "^2.1.4",
+    "microtime": "^2.1.6",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2"
+  },
+  "standard": {
+    "ignore": [
+      "clientInspected.js",
+      "noindex.js",
+      "t.js",
+      "saveMeAPage.js"
+    ],
+    "globals": [
+     "$x"
+    ]
+  }
+}
