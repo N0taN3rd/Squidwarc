@@ -39,7 +39,7 @@ Page Only option plus preserve all links found on the page that are on the same 
 Page + Same Domain Link option plus all links from other domains
 
 #### Crawls Operate In Terms Of A Composite memento
-A Memento is an archived copy of web resource [RFC 7089](http://www.rfc-editor.org/info/rfc7089)  The datetime when the copy was archived is called its Memento-Datetime.  A composite memento is a root resource such as an HTML web page and all of the embedded resources (images, CSS, etc.) required for a complete presentation.
+A *memento* is an archived copy of a web resource [RFC 7089](http://www.rfc-editor.org/info/rfc7089).  The datetime when the copy was archived is called its *Memento-Datetime*.  A *composite memento* is a root resource such as an HTML web page and all of the embedded resources (images, CSS, etc.) required for a complete presentation.
 
 More information about this terminology can be found via [ws-dl.blogspot.com](http://ws-dl.blogspot.com/search?q=composite)
 
