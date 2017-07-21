@@ -21,7 +21,7 @@ For more information about this see
 
 `Squidwarc` is built using Node.js and [chrome-remote-interface](https://github.com/cyrus-and/chrome-remote-interface).
 
-Can't install Node on your system
+If you are unable to install Node on your system
 then `Squidwarc` highly recommends [WARCreate](http://warcreate.com/) or [WAIL](https://github.com/N0taN3rd/wail/releases).   
 WARCreate did this first and if it had not `Squidwarc` would not exist :two_hearts:
 
