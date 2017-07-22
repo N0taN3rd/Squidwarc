@@ -79,35 +79,44 @@ The `config.json` file example below is provided beside the two shell scripts wi
 
 ```js
 {
- // supports page-only, page-same-domain, page-all-links
-// crawl only the page, crawl the page and all same domain links,
-// and crawl page and all links. In terms of a composite memento
+  // supports page-only, page-same-domain, page-all-links
+  // crawl only the page, crawl the page and all same domain links,
+  // and crawl page and all links. In terms of a composite memento
   "mode": "page-same-domain",
+ 
  // an array of seeds or a single seed
   "seeds": [
     "http://acid.matkelly.com"
   ],
+  
   "warc": {
     "naming": "url", // currently this is the only option supported do not change.....
     "output": "path" // where do you want the WARCs to be placed. optional defaults to cwd
   },
- // Chrome instance we are to connect to is running on host, port.  
-// must match --remote-debugging-port=<port> set when launching chrome.
-// localhost is default host when only setting --remote-debugging-port
+  
+  // Chrome is an HTTP/2 capable browser since v49, Firefox since v52 http://caniuse.com/#search=http2
+  // No known replay system can replay archived HTTP/2 request/responses  
+  "noHTTP2": true, // optional defaults to false
+  
+   // Chrome instance we are to connect to is running on host, port.  
+  // must match --remote-debugging-port=<port> set when launching chrome.
+  // localhost is default host when only setting --remote-debugging-port
   "connect": {
     "host": "localhost",
     "port": 9222
   },
-// time is in milliseconds
+  
+  // time is in milliseconds
   "timeouts": {
-   // wait at maxium 8s for Chrome to navigate to a page
+    // wait at maxium 8s for Chrome to navigate to a page
     "navigationTimeout": 8000,
- // wait 7 seconds after page load
+    // wait 7 seconds after page load
     "waitAfterLoad": 7000
   },
-// optional auto scrolling of the page. same feature as webrecorders auto-scroll page
-// time is in milliseconds and indicates the duration of the scroll
-// in proportion to page size. Higher values means longer smooth scrolling, shorter values means faster smooth scroll
+  
+ // optional auto scrolling of the page. same feature as webrecorders auto-scroll page
+ // time is in milliseconds and indicates the duration of the scroll
+ // in proportion to page size. Higher values means longer smooth scrolling, shorter values means faster smooth scroll
  "scroll": 4000
 }
 ```
