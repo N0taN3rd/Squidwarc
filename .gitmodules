@@ -1,0 +1,3 @@
+[submodule "node-warc"]
+	path = node-warc
+	url = https://github.com/N0taN3rd/node-warc
