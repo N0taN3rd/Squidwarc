@@ -1,7 +1,7 @@
 {
   "mode": "page-only",
   "seeds": [
-    "http://acid.matkelly.com"
+    "https://n0tan3rd.github.io/wail/sameDomain1"
   ],
   "warc": {
     "naming": "url"
@@ -13,5 +13,6 @@
   "timeouts": {
     "navigationTimeout": 8000,
     "waitAfterLoad": 7000
-  }
+  },
+  "noHTTP2": true
 }
