@@ -1,5 +1,4 @@
 # Squidwarc
-[![npm Package](https://img.shields.io/npm/v/squid-crawler.svg?style=flat-square)](https://www.npmjs.com/package/squid-crawler)
 
 `Squidwarc` is a high fidelity archival crawler that uses Chrome or Chrome Headless.
 
@@ -74,6 +73,10 @@ For more information see [Google web dev updates](https://developers.google.com/
 Once Chrome has been started you can use `run-crawler.sh`  passing it `-c <path-to-config.json>`
 
 More information can be retrieved by using `-h` or `--help`
+
+Or if you want to use node directly 
+
+`node --harmony index.js -c <path-to-config.json>`
 
 The `config.json` file example below is provided beside the two shell scripts without annotations as the annotations (comments) are not valid `json`
 

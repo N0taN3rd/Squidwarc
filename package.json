@@ -1,11 +1,14 @@
 {
-  "name": "squid-crawler",
-  "version": "1.0.2",
+  "name": "squidwarc",
+  "version": "1.0.0",
   "main": "index.js",
   "license": "GPL-3.0",
   "scripts": {
     "lint": "standard | snazzy",
     "lint-fix": "standard --fix"
+  },
+  "engines": {
+    "node": ">=7.9.0"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
