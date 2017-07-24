@@ -60,10 +60,10 @@ Chrome v59 (stable) or v60 (beta) are actively tested on Ubuntu 16.04.
 
 v60 is currently used and known to work well :+1:  
 
-Chrome < v59 will not work.  
+Chrome < v59 Headless will not work. Windows sorry your not supported yet. 
 
 No testing is done on canary or google-chrome-unstable so your millage may vary
-if you use these versions. Windows sorry your not supported yet.
+if you use these versions.
 
 Takes one argument `headless` if you wish to use Chrome headless otherwise runs Chrome with a head :grinning:
 
