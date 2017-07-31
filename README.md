@@ -42,6 +42,10 @@ A *memento* is an archived copy of a web resource [RFC 7089](http://www.rfc-edit
 
 More information about this terminology can be found via [ws-dl.blogspot.com](http://ws-dl.blogspot.com/search?q=composite)
 
+The mode set is currently applied to the initial seed list and any discovered seeds have ```page-only``` applied to them
+
+The application of the mode to the discovered seed is discussed in feature request [#13](https://github.com/N0taN3rd/Squidwarc/issues/13) 
+
 # Usage
 
 Run `npm install` or `yarn` before continuing in order to install the dependencies for this project.   
