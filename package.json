@@ -12,12 +12,12 @@
   },
   "dependencies": {
     "bluebird": "^3.5.0",
-    "chalk": "^2.0.1",
-    "chrome-remote-interface": "^0.24.2",
+    "chalk": "^2.1.0",
+    "chrome-remote-interface": "^0.24.3",
     "commander": "^2.11.0",
     "eventemitter3": "^2.0.3",
     "filenamify-url": "^1.0.0",
-    "fs-extra": "^4.0.0",
+    "fs-extra": "^4.0.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "node-warc": "^1.1.1",
@@ -36,7 +36,7 @@
     "benchmark": "^2.1.4",
     "microtime": "^2.1.6",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.2"
+    "standard": "^10.0.3"
   },
   "standard": {
     "ignore": [
