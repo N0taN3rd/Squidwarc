@@ -1,7 +1,7 @@
 {
   "mode": "page-only",
   "seeds": [
-    "http://acid.matkelly.com"
+    "http://www.reuters.com/"
   ],
   "warc": {
     "naming": "url"
@@ -12,6 +12,6 @@
   },
   "timeouts": {
     "navigationTimeout": 8000,
-    "waitAfterLoad": 7000
+    "waitAfterLoad": 15000
   }
 }
