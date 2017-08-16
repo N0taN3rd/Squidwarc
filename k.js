@@ -73,25 +73,6 @@ function getContentEncoding (headers, headersText) {
   return undefined
 }
 
-function getMapProxy (oObject) {
-  return new Proxy(oObject, {
-    set (target, key, value) {
-      if (!target[key]) {
-        target[key] = []
-      }
-      target[key].push(value)
-      return true
-    },
-    get (target, key) {
-      let v = target[key]
-      if (v === undefined || v === null) {
-        target[key] = []
-      }
-      return target[key]
-    }
-  })
-}
-
 class CapturedRequest {
   constructor (info, noHttp2 = false) {
     this.noHttp2 = noHttp2
@@ -109,7 +90,8 @@ class CapturedRequest {
       if (info.request.postData !== undefined && info.request.postData !== null) {
         this.postData = info.request.postData
       }
-    } else if (info.response) {
+    }
+    if (info.response) {
       if (!this.url) {
         this.url = info.response.url
       }
@@ -123,31 +105,53 @@ class CapturedRequest {
         requestHeadersText: info.response.requestHeadersText,
         protocol: info.response.protocol || 'HTTP/1.1'
       }
-      if (info.response.requestHeaders) {
-        if (!this.headers) {
+      if (!this.headers) {
+        if (info.response.requestHeaders) {
           this.headers = info.response.requestHeaders
+        } else if (info.response.requestHeadersText) {
+          this.headers = {}
+          let headArray = info.response.requestHeadersText.split('\r\n')
+          let len = headArray.length
+          let i = 1
+          let headSplit
+          for (; i < len; ++i) {
+            headSplit = headArray[i].split(' ')
+            this.headers[headSplit[0]] = headSplit[1]
+          }
         }
-        let method = this.method || info.response.requestHeaders[':method']
-        if (method && method !== '') {
-          this.method = method
+      }
+      if (!this.method) {
+        if (info.response.requestHeaders) {
+          let method = info.response.requestHeaders[':method']
+          if (method && method !== '') {
+            this.method = method
+          } else if (info.response.requestHeadersText) {
+            let httpString = info.response.requestHeadersText.substr(0, info.response.requestHeadersText.indexOf('\r\n'))
+            if (httpString) {
+              let httpStringParts = httpString.split(' ')
+              if (httpStringParts) {
+                this.method = httpStringParts[0]
+                if (!this.protocol) {
+                  this.protocol = httpStringParts[2]
+                }
+              }
+            }
+          }
         } else if (info.response.requestHeadersText) {
           let httpString = info.response.requestHeadersText.substr(0, info.response.requestHeadersText.indexOf('\r\n'))
           if (httpString) {
             let httpStringParts = httpString.split(' ')
             if (httpStringParts) {
               this.method = httpStringParts[0]
+              if (!this.protocol) {
+                this.protocol = httpStringParts[2]
+              }
             }
           }
         }
-      } else if (info.response.requestHeadersText && !this.headers) {
-        // let headArray = info.response.requestHeadersText.split('\r\n')
-        // let nhead = {}
-        // let len = headArray.length
-        // let i = 0
-        // for(; i < len; ++i) {
-        //
-        //   let [hk,kv] = headArray[i].split(':')
-        // }
+      }
+      if (!this.method && info.response.requestHeadersText) {
+
       }
     }
   }
@@ -192,7 +196,6 @@ class CapturedRequest {
       // console.log(info.response.requestHeadersText)
       let it = info.response.requestHeadersText.substr(0, info.response.requestHeadersText.indexOf('\r\n'))
       let [meth, _, proto] = it.split(' ')
-      console.log(meth, proto)
     } else if (info.response.requestHeaders) {
       console.log(info.response.requestHeaders)
       console.log(info.response.protocol)
@@ -208,7 +211,6 @@ async function doIt () {
   let res
   let ce
   const map = new Map()
-  const mapP = getMapProxy(map)
   for (; i < len; ++i) {
     rq = dumped[i]
     if (rq.request) {
