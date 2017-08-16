@@ -57,6 +57,8 @@ const CE = {
 const http2MethRe = /:method:\s(.*)\r\n/gi
 const methProto = /([A-Z]+)\s[^\s]+\s([^\r]+)/gi
 
+const oldHTTPStatuses = new Set(['HTTP/1.0', 'HTTP/1.1'])
+
 function getContentEncoding (headers, headersText) {
   if (headers) {
     if (headers[CE.upper]) {
@@ -91,10 +93,12 @@ class CapturedRequest {
         this.postData = info.request.postData
       }
     }
+
     if (info.response) {
       if (!this.url) {
         this.url = info.response.url
       }
+
       this.res = {
         url: info.response.url,
         status: info.response.status,
@@ -103,55 +107,62 @@ class CapturedRequest {
         headersText: info.response.headersText,
         requestHeaders: info.response.requestHeaders,
         requestHeadersText: info.response.requestHeadersText,
-        protocol: info.response.protocol || 'HTTP/1.1'
+        protocol: this._correctProtocol(info.redirectResponse.protocol),
+        encoding: getContentEncoding(info.response.headers, info.response.headersText)
       }
+
       if (!this.headers) {
         if (info.response.requestHeaders) {
           this.headers = info.response.requestHeaders
         } else if (info.response.requestHeadersText) {
-          this.headers = {}
+          let head = {}
           let headArray = info.response.requestHeadersText.split('\r\n')
-          let len = headArray.length
+          let len = headArray.length - 2 // contains two trailing CRLF
           let i = 1
           let headSplit
           for (; i < len; ++i) {
-            headSplit = headArray[i].split(' ')
-            this.headers[headSplit[0]] = headSplit[1]
+            headSplit = headArray[i].split(': ')
+            head[headSplit[0]] = headSplit[1]
           }
+          this.headers = head
+          let httpStringParts = headArray[0].split(' ')
+          this.method = this.method || httpStringParts[0]
+          this.protocol = this.protocol || this._correctProtocol(httpStringParts[2])
         }
       }
+
       if (!this.method) {
         if (info.response.requestHeaders) {
           let method = info.response.requestHeaders[':method']
           if (method && method !== '') {
             this.method = method
           } else if (info.response.requestHeadersText) {
-            let httpString = info.response.requestHeadersText.substr(0, info.response.requestHeadersText.indexOf('\r\n'))
-            if (httpString) {
-              let httpStringParts = httpString.split(' ')
-              if (httpStringParts) {
-                this.method = httpStringParts[0]
-                if (!this.protocol) {
-                  this.protocol = httpStringParts[2]
-                }
-              }
-            }
+            this._methProtoFromReqHeadText(info.response.requestHeadersText)
           }
         } else if (info.response.requestHeadersText) {
-          let httpString = info.response.requestHeadersText.substr(0, info.response.requestHeadersText.indexOf('\r\n'))
-          if (httpString) {
-            let httpStringParts = httpString.split(' ')
-            if (httpStringParts) {
-              this.method = httpStringParts[0]
-              if (!this.protocol) {
-                this.protocol = httpStringParts[2]
-              }
-            }
-          }
+          this._methProtoFromReqHeadText(info.response.requestHeadersText)
         }
       }
-      if (!this.method && info.response.requestHeadersText) {
+    }
+  }
 
+  _correctProtocol (oldProtocol) {
+    let newProtocol = oldProtocol.toUpperCase()
+    if (this.noHttp2) {
+      return oldHTTPStatuses.has(newProtocol) ? newProtocol : 'HTTP/1.1'
+    }
+    return newProtocol
+  }
+
+  _methProtoFromReqHeadText (requestHeadersText) {
+    let httpString = requestHeadersText.substr(0, requestHeadersText.indexOf('\r\n'))
+    if (httpString) {
+      let httpStringParts = httpString.split(' ')
+      if (httpStringParts) {
+        this.method = httpStringParts[0]
+        if (!this.protocol) {
+          this.protocol = this._correctProtocol(httpStringParts[2])
+        }
       }
     }
   }
@@ -166,10 +177,10 @@ class CapturedRequest {
             statusText: info.redirectResponse.statusText,
             headers: info.redirectResponse.headers,
             headersText: info.redirectResponse.headersText,
-            requestHeaders: info.redirectResponse.requestHeaders || info.headers,
+            requestHeaders: info.redirectResponse.requestHeaders || info.request.headers,
             requestHeadersText: info.redirectResponse.requestHeadersText,
             method: info.redirectResponse.method || info.request.method,
-            protocol: info.redirectResponse.protocol
+            protocol: this._correctProtocol(info.redirectResponse.protocol)
           })
         } else {
           let oldRR = this.redirectResponse
@@ -179,27 +190,79 @@ class CapturedRequest {
             statusText: info.redirectResponse.statusText,
             headers: info.redirectResponse.headers,
             headersText: info.redirectResponse.headersText,
-            requestHeaders: info.redirectResponse.requestHeaders || info.headers,
+            requestHeaders: info.redirectResponse.requestHeaders || info.request.headers,
             requestHeadersText: info.redirectResponse.requestHeadersText,
             method: info.redirectResponse.method || info.request.method,
-            protocol: info.redirectResponse.protocol
+            protocol: this._correctProtocol(info.redirectResponse.protocol)
           }]
         }
       }
+    } else if (
+      (this.headers === null || this.headers === undefined) &&
+      (this.method === null || this.method === undefined) &&
+      (this.url === null || this.url === undefined) &&
+      (this.res !== null && this.res !== undefined)
+    ) {
+      // we found you!
+      this.url = info.request.url
+      this.headers = info.request.headers
+      this.method = info.request.method
+      if (info.request.postData !== undefined && info.request.postData !== null) {
+        this.postData = info.request.postData
+      }
+      if (info.response) {
+        this.addResponse(info)
+      }
     } else {
-      console.log('blah')
+      reqMap.set(`${info.requestId}${uuid()}`, new CapturedRequest(info, this.noHttp2))
     }
   }
 
   addResponse (info) {
-    if (info.response.requestHeadersText) {
-      // console.log(info.response.requestHeadersText)
-      let it = info.response.requestHeadersText.substr(0, info.response.requestHeadersText.indexOf('\r\n'))
-      let [meth, _, proto] = it.split(' ')
-    } else if (info.response.requestHeaders) {
-      console.log(info.response.requestHeaders)
-      console.log(info.response.protocol)
+    if (this.res) {
+      if (Array.isArray(this.res)) {
+        this.res.push({
+          url: info.response.url,
+          status: info.response.status,
+          statusText: info.response.statusText,
+          headers: info.response.headers,
+          headersText: info.response.headersText,
+          requestHeaders: info.response.requestHeaders,
+          requestHeadersText: info.response.requestHeadersText,
+          protocol: this._correctProtocol(info.response.protocol),
+          encoding: getContentEncoding(info.response.headers, info.response.headersText)
+        })
+      } else {
+        let oldRes = this.res
+        this.res = [oldRes, {
+          url: info.response.url,
+          status: info.response.status,
+          statusText: info.response.statusText,
+          headers: info.response.headers,
+          headersText: info.response.headersText,
+          requestHeaders: info.response.requestHeaders,
+          requestHeadersText: info.response.requestHeadersText,
+          protocol: this._correctProtocol(info.response.protocol),
+          encoding: getContentEncoding(info.response.headers, info.response.headersText)
+        }]
+      }
+    } else {
+      this.res = {
+        url: info.response.url,
+        status: info.response.status,
+        statusText: info.response.statusText,
+        headers: info.response.headers,
+        headersText: info.response.headersText,
+        requestHeaders: info.response.requestHeaders,
+        requestHeadersText: info.response.requestHeadersText,
+        protocol: this._correctProtocol(info.response.protocol),
+        encoding: getContentEncoding(info.response.headers, info.response.headersText)
+      }
     }
+  }
+
+  toJSON () {
+
   }
 }
 
@@ -217,7 +280,7 @@ async function doIt () {
       if (!map.has(rq.requestId)) {
         map.set(rq.requestId, new CapturedRequest(rq))
       } else {
-        map.get(rq.requestId).addMaybeRedirect(rq)
+        map.get(rq.requestId).addMaybeRedirect(rq,map)
       }
     } else {
       if (!map.has(rq.requestId)) {
@@ -227,7 +290,7 @@ async function doIt () {
       }
     }
   }
-  // inspect(map)
+  inspect(map)
 }
 
 doIt()
