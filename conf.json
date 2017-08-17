@@ -12,6 +12,7 @@
   },
   "timeouts": {
     "navigationTimeout": 8000,
-    "waitAfterLoad": 15000
-  }
+    "waitAfterLoad": 10000
+  },
+  "noHTTP2": true
 }
