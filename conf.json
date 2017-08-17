@@ -1,7 +1,7 @@
 {
   "mode": "page-only",
   "seeds": [
-    "http://www.reuters.com/"
+    "http://www.cnn.com"
   ],
   "warc": {
     "naming": "url"
@@ -13,6 +13,5 @@
   "timeouts": {
     "navigationTimeout": 8000,
     "waitAfterLoad": 10000
-  },
-  "noHTTP2": true
+  }
 }
