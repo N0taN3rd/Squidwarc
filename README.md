@@ -1,4 +1,8 @@
-# Squidwarc
+<p align="center">
+<img alt="Squidwarc" src="https://github.com/N0taN3rd/Squidwarc/blob/master/meta/logo.png?raw=true" width="10%">
+</p>
+
+---
 
 `Squidwarc` is a high fidelity archival crawler that uses Chrome or Chrome Headless.
 
