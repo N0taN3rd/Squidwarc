@@ -13,11 +13,11 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "chalk": "^2.1.0",
-    "chrome-remote-interface": "^0.24.3",
+    "chrome-remote-interface": "^0.24.5",
     "commander": "^2.11.0",
     "eventemitter3": "^2.0.3",
     "filenamify-url": "^1.0.0",
-    "fs-extra": "^4.0.1",
+    "fs-extra": "^4.0.2",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "node-warc": "^1.1.1",
@@ -29,7 +29,7 @@
     "remote-dom": "^0.0.3",
     "string": "^3.3.3",
     "uuid": "^3.1.0",
-    "validator": "^8.0.0",
+    "validator": "^8.2.0",
     "yargs": "^8.0.2"
   },
   "devDependencies": {
