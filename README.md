@@ -60,17 +60,13 @@ There are two shell scripts provided to help you use the project at the current 
 You can change the variable `chromeBinary` to point to the Chrome command to use,
 that is to launch Chrome via.
 
-The value for `chromeBinary` currently is `google-chrome-beta`
+The value for `chromeBinary` is initially set to `google-chrome-beta`
 
 The `remoteDebugPort` variable is used for `--remote-debugging-port=<port>`
 
-Chrome v59 (stable) or v60 (beta) are actively tested on Ubuntu 16.04.
+Chrome versions 59 (stable) or 60 (beta) are actively tested on Ubuntu 16.04. Chrome version 60 is currently used and known to work well :+1:  
 
-v60 is currently used and known to work well :+1:  
-
-Chrome < v59 Headless will not work. 
-
-Windows sorry your not supported yet for headless either. 
+Chrome versions less than 59 Headless will not work. Windows is not supported yet (as of version 59).
 
 No testing is done on canary or google-chrome-unstable so your millage may vary
 if you use these versions.
