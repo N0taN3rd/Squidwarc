@@ -1,16 +1,11 @@
 <p align="center">
-<img alt="Squidwarc" src="https://github.com/N0taN3rd/Squidwarc/blob/master/meta/logo.png?raw=true" width="10%">
+<img alt="Squidwarc" src="https://github.com/N0taN3rd/Squidwarc/blob/master/meta/logo.png?raw=true" width="30%">
 </p>
 
----
+**Squidwarc** is a high fidelity archival crawler that uses Chrome or Chrome Headless. **Squidwarc** aims to address the need for a high fidelity crawler akin to Heritrix while still being easy enough for the personal archivist to setup and use.
 
-`Squidwarc` is a high fidelity archival crawler that uses Chrome or Chrome Headless.
-
-`Squidwarc` aims to address the need for a high fidelity crawler akin to Heritrix while still
-easy enough for the personal archivist to setup and use.
-
-`Squidwarc` does not seek (at the moment) to dethrone Heritrix as the queen of wide archival crawls rather
-seeks to address Heritrix's short comings namely
+**Squidwarc** does not seek (at the moment) to dethrone Heritrix as the queen of wide archival crawls rather
+seeks to address Heritrix's short comings namely:
 - No JavaScript execution
 - Everything is plain text
 - Requiring configuration to known how to preserve the web
@@ -22,13 +17,13 @@ For more information about this see
 - [2013-11-28: Replaying the SOPA Protest](http://ws-dl.blogspot.ca/2013/11/2013-11-28-replaying-sopa-protest.html)
 - [2015-06-26: PhantomJS+VisualEvent or Selenium for Web Archiving?](http://ws-dl.blogspot.ca/2015/06/2015-06-26-phantomjsvisualevent-or.html)
 
-`Squidwarc` is built using Node.js and [chrome-remote-interface](https://github.com/cyrus-and/chrome-remote-interface).
+**Squidwarc** is built using Node.js and [chrome-remote-interface](https://github.com/cyrus-and/chrome-remote-interface).
 
 If you are unable to install Node on your system
-then `Squidwarc` highly recommends [WARCreate](http://warcreate.com/) or [WAIL](https://github.com/N0taN3rd/wail/releases).   
-WARCreate did this first and if it had not `Squidwarc` would not exist :two_hearts:
+then **Squidwarc** highly recommends [WARCreate](http://warcreate.com/) or [WAIL](https://github.com/N0taN3rd/wail/releases).   
+WARCreate did this first and if it had not **Squidwarc** would not exist :two_hearts:
 
-If recording the web is what you seek `Squidwarc` highly recommends [Webrecorder](https://webrecorder.io/).
+If recording the web is what you seek **Squidwarc** highly recommends [Webrecorder](https://webrecorder.io/).
 
 
 # Out Of The Box Crawls
