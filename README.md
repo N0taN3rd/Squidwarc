@@ -8,7 +8,7 @@
 seeks to address Heritrix's short comings namely:
 - No JavaScript execution
 - Everything is plain text
-- Requiring configuration to known how to preserve the web
+- Requiring configuration to know how to preserve the web
 - Setup time and technical knowledge required of its users
 
 For more information about this see
