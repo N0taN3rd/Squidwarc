@@ -23,7 +23,7 @@ If you are unable to install Node on your system
 then **Squidwarc** highly recommends [WARCreate](http://warcreate.com/) or [WAIL](https://github.com/N0taN3rd/wail/releases).   
 WARCreate did this first and if it had not **Squidwarc** would not exist :two_hearts:
 
-If recording the web is what you seek **Squidwarc** highly recommends [Webrecorder](https://webrecorder.io/).
+If recording the web is what you seek, **Squidwarc** highly recommends [Webrecorder](https://webrecorder.io/).
 
 
 # Out Of The Box Crawls
