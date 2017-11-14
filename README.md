@@ -54,16 +54,15 @@ There are two shell scripts provided to help you use the project at the current 
 ### run-chrome.sh   
 This script starts and persists running a version of Chrome used by the crawler. The Chrome binary used by **Squidwarc** is defined in the `chromeBinary` variable in this shell script. You can change the variable `chromeBinary` to point to the Chrome binary command to use if desired. Otherwise, the defaults ought to work.
 
-The value for `chromeBinary` is initially set to `google-chrome-beta`
+The value for `chromeBinary` is initially set to use `google-chrome-beta` on Linux. If you are not using Chrome Beta, please change this to the name of the binary for your local Chrome.
 
 The `remoteDebugPort` variable is used for `--remote-debugging-port=<port>`
 
 Versions of Chrome greater than or equal to 60 are supported. As of last testing (Chrome 59), Windows is not yet officially supported but may now work. Please try it and let us know!
 
-No testing is done on canary or google-chrome-unstable so your millage may vary
-if you use these versions.
+No testing is done on canary or google-chrome-unstable so your millage may vary if you use these versions.
 
-Takes one argument `headless` if you wish to use Chrome headless otherwise runs Chrome with a head :grinning:
+This script takes one optinal argument, `headless`. Use this argument if you wish to use Chrome headless in lieu of the standard Chrome binary, otherwise runs Chrome with a head :grinning:
 
 For more information see [Google web dev updates](https://developers.google.com/web/updates/2017/04/headless-chrome).
 
