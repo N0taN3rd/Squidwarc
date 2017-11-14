@@ -52,8 +52,7 @@ Run `npm install` or `yarn` before continuing in order to install the dependenci
 There are two shell scripts provided to help you use the project at the current stage.
 
 ### run-chrome.sh   
-You can change the variable `chromeBinary` to point to the Chrome command to use,
-that is to launch Chrome via.
+This script starts and persists running a version of Chrome used by the crawler. The Chrome binary used by **Squidwarc** is defined in the `chromeBinary` variable in this shell script. You can change the variable `chromeBinary` to point to the Chrome binary command to use if desired. Otherwise, the defaults ought to work.
 
 The value for `chromeBinary` is initially set to `google-chrome-beta`
 
