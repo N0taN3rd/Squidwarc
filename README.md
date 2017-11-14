@@ -61,7 +61,7 @@ The `remoteDebugPort` variable is used for `--remote-debugging-port=<port>`
 
 Chrome versions 59 (stable) or 60 (beta) are actively tested on Ubuntu 16.04. Chrome version 60 is currently used and known to work well :+1:  
 
-Chrome versions less than 59 Headless will not work. Windows is not supported yet (as of version 59).
+Chrome versions less than 59 Headless will not work. Windows is not supported yet (as of Chrome version 59).
 
 No testing is done on canary or google-chrome-unstable so your millage may vary
 if you use these versions.
