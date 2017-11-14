@@ -1,7 +1,7 @@
 {
   "mode": "page-only",
   "seeds": [
-    "http://www.cnn.com"
+    "https://reactjs.org/"
   ],
   "warc": {
     "naming": "url"
