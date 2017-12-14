@@ -5,8 +5,7 @@
     "https://www.reuters.com/"
   ],
   "warc": {
-    "naming": "url",
-    "output": "collections/rewrite/archive"
+    "naming": "url"
   },
   "connect": {
     "launch": true,
