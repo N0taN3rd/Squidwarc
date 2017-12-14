@@ -1,17 +1,22 @@
 {
   "mode": "page-only",
+  "depth": 1,
   "seeds": [
-    "https://reactjs.org/"
+    "https://www.reuters.com/"
   ],
   "warc": {
-    "naming": "url"
+    "naming": "url",
+    "output": "collections/rewrite/archive"
   },
   "connect": {
+    "launch": true,
     "host": "localhost",
     "port": 9222
   },
-  "timeouts": {
-    "navigationTimeout": 8000,
-    "waitAfterLoad": 10000
+  "crawlControl": {
+    "globalWait": 60000,
+    "inflightIdle": 1000,
+    "numInflight": 2,
+    "navWait": 8000
   }
 }
