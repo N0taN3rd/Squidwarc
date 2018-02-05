@@ -1,6 +1,6 @@
 {
   "name": "squidwarc",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "GPL-3.0",
   "scripts": {
@@ -11,32 +11,35 @@
     "node": ">=7.9.0"
   },
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "chalk": "^2.1.0",
-    "chrome-remote-interface": "^0.24.3",
-    "commander": "^2.11.0",
-    "eventemitter3": "^2.0.3",
+    "bluebird": "^3.5.1",
+    "chalk": "^2.3.0",
+    "chrome-remote-interface": "^0.25.5",
+    "commander": "^2.13.0",
+    "eventemitter3": "^3.0.0",
     "filenamify-url": "^1.0.0",
-    "fs-extra": "^4.0.1",
+    "fs-extra": "^5.0.0",
     "lodash": "^4.17.4",
-    "moment": "^2.18.1",
-    "node-warc": "^1.1.1",
-    "normalize-url": "^1.9.1",
-    "parse-domain": "^1.1.0",
+    "moment": "^2.20.1",
+    "node-warc": "^2.0.0-rc2",
+    "normalize-url": "^2.0.1",
+    "parse-domain": "^2.0.0",
     "pretty-error": "^2.1.1",
-    "pretty-ms": "^3.0.0",
-    "ramda": "^0.24.1",
-    "remote-dom": "^0.0.3",
+    "pretty-ms": "^3.1.0",
+    "ramda": "^0.25.0",
     "string": "^3.3.3",
-    "uuid": "^3.1.0",
-    "validator": "^8.0.0",
-    "yargs": "^8.0.2"
+    "uuid": "^3.2.1",
+    "validator": "^9.2.0",
+    "yargs": "^10.1.1"
   },
   "devDependencies": {
+    "@types/fs-extra": "^5.0.0",
     "benchmark": "^2.1.4",
-    "microtime": "^2.1.6",
+    "microtime": "^2.1.7",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3"
+  },
+  "resolutions": {
+    "graceful-fs": "4.1.11"
   },
   "standard": {
     "ignore": [
