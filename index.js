@@ -38,6 +38,6 @@ if (program.rawArgs.slice(2).length === 0) {
     cp.crawlerOpt('Running Crawl From Config File', program.config)
     configRunner(program.config)
   } else {
-    cp.bred('Config argument was not existence')
+    cp.bred('Config argument (-c) was no supplied.')
   }
 }
