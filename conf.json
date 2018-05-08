@@ -1,4 +1,5 @@
 {
+  "use": "puppeteer",
   "mode": "page-only",
   "depth": 1,
   "seeds": [
