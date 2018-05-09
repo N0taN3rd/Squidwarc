@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer')
-const {init, collect} = require('./lib/utils/linkCollector')
+const LinkCollector = require('./lib/linkCollector')
 const DEFAULT_ARGS = require('./lib/launcher/defaultArgs')
 
 puppeteer.launch({
@@ -9,7 +9,7 @@ puppeteer.launch({
 }).then(async browser => {
   const page = await browser.newPage()
   await page.setViewport({width: 1920, height: 1080})
-  await page.evaluateOnNewDocument(init)
+  await page.evaluateOnNewDocument(LinkCollector.getInit())
   page.on('console', msg => {
     if (msg.type() === 'info') {
       console.log(msg.text())
@@ -18,7 +18,7 @@ puppeteer.launch({
 
   await page.goto('https://www.reuters.com/', {waitUntil: 'networkidle2'})
   console.log('doing collection')
-  const results = await page.evaluate(collect)
+  const results = await page.evaluate(LinkCollector.getCollect())
   console.log(results)
 
   await browser.close()
