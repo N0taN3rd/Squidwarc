@@ -1,20 +1,26 @@
-const fs = require('fs-extra')
-const runPromise = require('./lib/runPromise')
-const util = require('util')
-const cp = require('child_process')
-const PC = require('./lib/crawler/puppeteer')
+const puppeteer = require('puppeteer')
+const {init, collect} = require('./lib/utils/linkCollector')
+const DEFAULT_ARGS = require('./lib/launcher/defaultArgs')
 
-async function inner (args) {
-  const crawler = new PC()
-  await crawler.init()
-}
+puppeteer.launch({
+  headless: false,
+  ignoreDefaultArgs: true,
+  args: DEFAULT_ARGS
+}).then(async browser => {
+  const page = await browser.newPage()
+  await page.setViewport({width: 1920, height: 1080})
+  await page.evaluateOnNewDocument(init)
+  page.on('console', msg => {
+    if (msg.type() === 'info') {
+      console.log(msg.text())
+    }
+  })
 
-function makeRunnable (runnable) {
-  return function () {
-    return runPromise(runnable.apply(this, arguments))
-  }
-}
+  await page.goto('https://www.reuters.com/', {waitUntil: 'networkidle2'})
+  console.log('doing collection')
+  const results = await page.evaluate(collect)
+  console.log(results)
 
-const it = makeRunnable(inner)
+  await browser.close()
+})
 
-it('conf.json')
