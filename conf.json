@@ -1,13 +1,13 @@
 {
-  "use": "puppeteer",
+  "use": "chrome",
+  "headless": true,
   "mode": "page-same-domain",
   "depth": 1,
   "seeds": [
     "https://www.reuters.com/"
   ],
   "warc": {
-    "naming": "url",
-    "append": true
+    "naming": "url"
   },
   "connect": {
     "launch": true,
