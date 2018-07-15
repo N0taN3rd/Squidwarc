@@ -49,75 +49,47 @@ The application of the mode to the discovered seed is discussed in feature reque
 
 Run `npm install` or `yarn` before continuing in order to install the dependencies for this project.   
 
-There are two shell scripts provided to help you use the project at the current stage.
+Once the dependancies have been installed you can execute `$ ./run-crawler.sh -c conf.json` or `$ node index.js -c conf.json` to start crawling!
 
-### run-chrome.sh   
-This script starts and persists running a version of Chrome used by the crawler. The Chrome binary used by **Squidwarc** is defined in the `chromeBinary` variable in this shell script. You can change the variable `chromeBinary` to point to the Chrome binary command to use if desired. Otherwise, the defaults ought to work.
+Note that when using the provided `conf.json`, Squidwarc will automatically launch Chrome for you.
 
-The value for `chromeBinary` is initially set to use `google-chrome-beta` on Linux. If you are not using Chrome Beta, please change this to the name of the binary for your local Chrome.
+If you wish for Squidwarc to connect to an already running instance of Chrome please set `connect.launch` to false and ensure that the already running Chrome instance was launched using the `--remote-debugging-port=<port>` argument.
 
-The `remoteDebugPort` variable is used for `--remote-debugging-port=<port>`
+More information about the arguments Squidwarc is expecting can be viewed using `-h` or `--help`.
 
-Versions of Chrome greater than or equal to 60 are supported. As of last testing (Chrome 59), Windows is not yet officially supported but may now work. Please try it and let us know!
-
-No testing is done on canary or google-chrome-unstable so your millage may vary if you use these versions.
-
-This script takes one optinal argument, `headless`. Use this argument if you wish to use Chrome headless in lieu of the standard Chrome binary, otherwise runs Chrome with a head :grinning:
-
-For more information see [Google web dev updates](https://developers.google.com/web/updates/2017/04/headless-chrome).
-
-### run-crawler.sh
-Once Chrome has been started you can use `run-crawler.sh`  passing it `-c <path-to-config.json>`
-
-More information can be retrieved by using `-h` or `--help`
-
-Or if you want to use node directly 
-
-`node --harmony index.js -c <path-to-config.json>`
-
-The `config.json` file example below is provided beside the two shell scripts without annotations as the annotations (comments) are not valid `json`
+### Config file
+The `config.json` file example below is provided for you without annotations as the annotations (comments) are not valid `json`
 
 ```js
 {
-  // supports page-only, page-same-domain, page-all-links
-  // crawl only the page, crawl the page and all same domain links,
-  // and crawl page and all links. In terms of a composite memento
-  "mode": "page-same-domain",
- 
- // an array of seeds or a single seed
+  "mode": "page-only", // the mode you wish to crawl using
+  "depth": 1, // how many hops out do you wish to crawl 
+  
+  // the crawls starting points
   "seeds": [
-    "http://acid.matkelly.com"
+    "https://www.reuters.com/" 
   ],
   
   "warc": {
-    "naming": "url", // currently this is the only option supported do not change.....
-    "output": "path" // where do you want the WARCs to be placed. optional defaults to cwd
+    "naming": "url" // currently this is the only option supported do not change.....
   },
   
-  // Chrome is an HTTP/2 capable browser since v49, Firefox since v52 http://caniuse.com/#search=http2
-  // No known replay system can replay archived HTTP/2 request/responses  
-  "noHTTP2": true, // optional defaults to false
-  
-   // Chrome instance we are to connect to is running on host, port.  
-  // must match --remote-debugging-port=<port> set when launching chrome.
+  // Chrome instance we are to connect to is running on host, port.  
+  // must match --remote-debugging-port=<port> set when Squidwarc is connecting to an already running instance of  Chrome.
   // localhost is default host when only setting --remote-debugging-port
   "connect": {
+    "launch": true, // if you want Squidward to attempt to launch the version of Chrome already on your system or not
     "host": "localhost",
     "port": 9222
   },
   
   // time is in milliseconds
-  "timeouts": {
-    // wait at maxium 8s for Chrome to navigate to a page
-    "navigationTimeout": 8000,
-    // wait 7 seconds after page load
-    "waitAfterLoad": 7000
-  },
-  
- // optional auto scrolling of the page. same feature as webrecorders auto-scroll page
- // time is in milliseconds and indicates the duration of the scroll
- // in proportion to page size. Higher values means longer smooth scrolling, shorter values means faster smooth scroll
- "scroll": 4000
+  "crawlControl": {
+    "globalWait": 60000, // maximum time spent visiting a page 
+    "inflightIdle": 1000, // how long to wait for until network idle is determined when there are only `numInflight` (no response recieved) requests 
+    "numInflight": 2, // when there are only N inflight (no response recieved) requests start network idle count down
+    "navWait": 8000 // wait at maxium 8s for Chrome to navigate to a page
+  }
 }
 ```
 [![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
