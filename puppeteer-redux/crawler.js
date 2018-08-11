@@ -1,13 +1,14 @@
-const EventEmitter = require('eventemitter3')
+const puppeteer = require('puppeteer')
 const {Browser} = require('puppeteer/lib/Browser')
+const InjectManager = require('../lib/injectManager')
+const DEFAULT_ARGS = require('../lib/launcher/defaultArgs')
+const RequestMonitor = require('../node-warc/lib/requestCapturers/puppeteerCDP')
+const WARCGenerator = require('../node-warc/lib/writers/puppeteer')
+const EventEmitter = require('eventemitter3')
+const NetIdle = require('../lib/crawler/netIdleWatcher')
 const chalk = require('chalk')
 const autobind = require('class-autobind').default
 const inspect = require('util').inspect
-const RequestCapturer = require('../../node-warc/lib/requestCapturers/puppeteerCDP')
-const WARCGenerator = require('../../node-warc/lib/writers/puppeteer')
-const InjectManager = require('../injectManager')
-const launch = require('../launcher/puppeteer')
-const NetIdle = require('./netIdleWatcher')
 
 
 function badExport (exposed) {
@@ -34,10 +35,7 @@ function usrFNGood() {
 `)
 }
 
-/**
- * @extends {EventEmitter}
- */
-class PuppeteerCrawler extends EventEmitter {
+module.exports = class Crawler extends EventEmitter {
   constructor (options = {}) {
     super()
 
@@ -71,9 +69,9 @@ class PuppeteerCrawler extends EventEmitter {
 
     this.options = options
     /**
-     * @type {?RequestCapturer}
+     * @type {?RequestMonitor}
      */
-    this.requestCapturer = null
+    this.requestMonitor = null
 
 
     /**
@@ -83,20 +81,14 @@ class PuppeteerCrawler extends EventEmitter {
     this._warcGenerator = new WARCGenerator()
 
     this.defaultWait = {waitUntil: 'networkidle2'}
-    autobind(this, PuppeteerCrawler.prototype)
+    autobind(this, Crawler.prototype)
   }
 
   _onDisconnected () {
     this.emit('disconnected')
   }
 
-
-  async init () {
-    this._browser = await launch(this.options)
-    this._browser.on(Browser.Events.Disconnected, this._onDisconnected)
-    this._page = await this._browser.newPage()
-    this._client = this._page._client
-
+  async _init () {
     await this._client.send('Animation.setPlaybackRate', {playbackRate: 1000})
     await this._client.send('Network.setBypassServiceWorker', {bypass: true})
     await this._client.send(
@@ -108,9 +100,20 @@ class PuppeteerCrawler extends EventEmitter {
     this._client.removeAllListeners('Log.entryAdded')
     this._client.removeAllListeners('Runtime.consoleAPICalled')
     this._client.removeAllListeners('Runtime.exceptionThrown')
+  }
 
-    this.requestCapturer = new RequestCapturer()
-    this.requestCapturer.attach(this._client)
+  async init () {
+    this._browser = await puppeteer.launch({
+      ignoreDefaultArgs: true,
+      args: DEFAULT_ARGS.concat(['--headless']),
+      defaultViewport: {width: 1920, height: 1080}
+    })
+    this._browser.on(Browser.Events.Disconnected, this._onDisconnected)
+    this._page = await this._browser.newPage()
+    this._client = this._page._client
+    await this._init()
+    this.requestMonitor = new RequestMonitor()
+    this.requestMonitor.attach(this._client)
     this._warcGenerator.on('finished', this._onWARCGenFinished)
     this._warcGenerator.on('error', this._onWARCGenError)
     if (this.options.script) {
@@ -119,8 +122,6 @@ class PuppeteerCrawler extends EventEmitter {
       try {
         userFN = require(this.options.script)
       } catch (e) {
-        console.log(chalk.bold.red('Squidwarc is unable to use the supplied user script due to an error!'))
-        console.error(e)
         good = false
       }
 
@@ -141,8 +142,8 @@ class PuppeteerCrawler extends EventEmitter {
     }
   }
 
-  async navigate (url) {
-    this.requestCapturer.startCapturing()
+  async crawl (url) {
+    this.requestMonitor.startCapturing()
     await this._page.goto(url, this.defaultWait)
     const nip = NetIdle.idlePromise(this._page)
     if (this._usrFN) {
@@ -168,7 +169,7 @@ class PuppeteerCrawler extends EventEmitter {
    * @desc Stop capturing the current web pages network requests
    */
   stopCapturingNetwork () {
-    this.requestCapturer.stopCapturing()
+    this.requestMonitor.stopCapturing()
   }
 
   /**
@@ -176,7 +177,7 @@ class PuppeteerCrawler extends EventEmitter {
    * @return {!Promise<?Object>}
    */
   stop () {
-    this.requestCapturer.stopCapturing()
+    this.requestMonitor.stopCapturing()
     return this._client.send('Page.stopLoading')
   }
 
@@ -185,7 +186,7 @@ class PuppeteerCrawler extends EventEmitter {
    * @return {Promise<void>}
    */
   async shutdown () {
-    this.requestCapturer.stopCapturing()
+    this.requestMonitor.stopCapturing()
     await this._browser.close()
   }
 
@@ -227,8 +228,8 @@ class PuppeteerCrawler extends EventEmitter {
       this._ua
     )
     await this._warcGenerator.writeWarcMetadataOutlinks(this._currentUrl, outlinks)
-    this.requestCapturer.stopCapturing()
-    for (let nreq of this.requestCapturer.iterateRequests()) {
+    this.requestMonitor.stopCapturing()
+    for (let nreq of this.requestMonitor.iterateRequests()) {
       try {
         await this._warcGenerator.generateWarcEntry(nreq, this._client)
       } catch (error) {
@@ -264,7 +265,11 @@ class PuppeteerCrawler extends EventEmitter {
    * @return {Promise<{outlinks: string, links: Array<{href: string, pathname: string, host: string}>, location: string}, Error>}
    */
   async getOutLinks () {
-    return await this._page.evaluate(InjectManager.rawCollectInject())
+    let evaled = await this._client.send(
+      'Runtime.evaluate',
+      InjectManager.getCollectInject()
+    )
+    return evaled.result.value
   }
 
   /**
@@ -281,7 +286,7 @@ class PuppeteerCrawler extends EventEmitter {
    * @return {Iterator<CapturedRequest>}
    */
   [Symbol.iterator] () {
-    return this.requestCapturer.values()
+    return this.requestMonitor.values()
   }
 
   /**
@@ -300,6 +305,6 @@ class PuppeteerCrawler extends EventEmitter {
   _onWARCGenFinished () {
     this.emit('warc-gen-finished')
   }
+
 }
 
-module.exports = PuppeteerCrawler
