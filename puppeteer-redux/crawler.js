@@ -10,7 +10,6 @@ const chalk = require('chalk')
 const autobind = require('class-autobind').default
 const inspect = require('util').inspect
 
-
 function badExport (exposed) {
   console.log(chalk`{bold.red Squidwarc does not know how to handled the supplied script:
 You supplied a ${typeof exposed}:
@@ -26,10 +25,9 @@ You supplied:
     ${notAsyncFn.toString()}}`)
   console.log(chalk.bold.blue('Please export a function similar to:'))
   console.log(chalk.bold.blue('module.exports = async function (page) {....}'))
-
 }
 
-function usrFNGood() {
+function usrFNGood () {
   console.log(chalk`{bold.green With great power comes great responsibility!}
 {bold.red Squidwarc is not responsible for ill behaved user supplied scripts!}
 `)
@@ -73,7 +71,6 @@ module.exports = class Crawler extends EventEmitter {
      */
     this.requestMonitor = null
 
-
     /**
      * @type {PuppeteerWARCGenerator}
      * @private
@@ -116,30 +113,6 @@ module.exports = class Crawler extends EventEmitter {
     this.requestMonitor.attach(this._client)
     this._warcGenerator.on('finished', this._onWARCGenFinished)
     this._warcGenerator.on('error', this._onWARCGenError)
-    if (this.options.script) {
-      let good = true
-      let userFN
-      try {
-        userFN = require(this.options.script)
-      } catch (e) {
-        good = false
-      }
-
-      if (typeof userFN !== 'function') {
-        badExport(userFN)
-        good = false
-      }
-
-      if (good && userFN[Symbol.toStringTag] !== "AsyncFunction") {
-        notAsync(userFN)
-        good = false
-      }
-
-      if (good) {
-        this._usrFN = userFN
-        usrFNGood()
-      }
-    }
   }
 
   async crawl (url) {
@@ -305,6 +278,4 @@ module.exports = class Crawler extends EventEmitter {
   _onWARCGenFinished () {
     this.emit('warc-gen-finished')
   }
-
 }
-

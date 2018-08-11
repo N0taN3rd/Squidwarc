@@ -16,8 +16,7 @@
  */
 
 const program = require('commander')
-const R = require('ramda')
-const configRunner = require('./lib/runners').configRunner
+const configRunner = require('./lib/runners')
 const cp = require('./lib/utils/colorPrinters')
 
 process.on('unhandledRejection', function (reason, p) {
@@ -34,7 +33,7 @@ if (program.rawArgs.slice(2).length === 0) {
   cp.green(program.helpInformation())
   // process.exit(1)
 } else {
-  if (!R.isNil(program.config)) {
+  if (program.config != null) {
     cp.crawlerOpt('Running Crawl From Config File', program.config)
     configRunner(program.config)
   } else {

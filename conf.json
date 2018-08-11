@@ -1,6 +1,7 @@
 {
   "use": "chrome",
   "headless": true,
+  "script": "./userFns.js",
   "mode": "page-same-domain",
   "depth": 1,
   "seeds": [

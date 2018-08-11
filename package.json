@@ -28,8 +28,8 @@
     "pretty-error": "^2.1.1",
     "pretty-ms": "^3.2.0",
     "puppeteer": "^1.7.0",
-    "ramda": "^0.25.0",
     "string": "^3.3.3",
+    "untildify": "^3.0.3",
     "uuid": "^3.3.2",
     "validator": "^10.5.0",
     "yargs": "^12.0.1"
@@ -38,6 +38,7 @@
     "@types/fs-extra": "^5.0.4",
     "benchmark": "^2.1.4",
     "microtime": "^2.1.8",
+    "prettier-standard": "^8.0.1",
     "snazzy": "^7.1.1",
     "standard": "^11.0.1"
   },

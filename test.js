@@ -1,10 +1,15 @@
 const Crawler = require('./puppeteer-redux/crawler')
+const Config = require('./lib/config')
+const path = require('path')
+const pd = require('parse-domain')
+const untildify = require('untildify')
 
-const usrScriptP = '/home/john/WebstormProjects/Squidwarc/userFns.js'
-const url = 'https://www.instagram.com/visit_berlin/'
+const usrScriptP = './userFns.js'
+const url = 'https://www.reuters.com/'
 
 async function doIt () {
-  const crawler = new Crawler({script: usrScriptP})
+  // console.log(await Config.loadConfig('conf.json'))
+  const crawler = new Crawler({script: require(usrScriptP)})
   await crawler.init()
   const outlinks = await crawler.crawl(url)
   await crawler.shutdown()
@@ -16,3 +21,4 @@ async function doIt () {
 
 doIt().catch(error => console.error(error))
 
+// console.log(require(usrScriptP))
