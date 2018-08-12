@@ -11,7 +11,7 @@ esac
 chromeVersion=$("$chromeBinary" --version | grep -oE "\d{1,4}" | head -n1)
 
 if [ "$1" = "headless" ]; then
-   "$chromeBinary" --headless --disable-gpu --remote-debugging-port=${remoteDebugPort}
+   "$chromeBinary" --headless --remote-debugging-port=${remoteDebugPort}
 else
    "$chromeBinary" --remote-debugging-port=${remoteDebugPort}
 fi
