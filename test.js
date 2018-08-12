@@ -1,22 +1,20 @@
-const Crawler = require('./puppeteer-redux/crawler')
-const Config = require('./lib/config')
-const path = require('path')
-const pd = require('parse-domain')
-const untildify = require('untildify')
-
-const usrScriptP = './userFns.js'
-const url = 'https://www.reuters.com/'
+const fs = require('fs-extra')
+const Frontier = require('./lib/crawler/frontier')
 
 async function doIt () {
+  const frontier = new Frontier()
+  frontier.init({
+    url: 'https://www.reuters.com/',
+    depth: 1,
+    mode: Symbol.for('page-same-domain')
+  })
+  console.log(frontier.next())
   // console.log(await Config.loadConfig('conf.json'))
-  const crawler = new Crawler({script: require(usrScriptP)})
-  await crawler.init()
-  const outlinks = await crawler.crawl(url)
-  await crawler.shutdown()
-  for (const it of crawler) {
-    console.log(it)
-  }
-  console.log(outlinks)
+  const links = await fs.readJSON('seed.json')
+  frontier.process(links)
+  console.log(frontier)
+  console.log(frontier.next())
+
 }
 
 doIt().catch(error => console.error(error))

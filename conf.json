@@ -1,5 +1,5 @@
 {
-  "use": "chrome",
+  "use": "puppeteer",
   "headless": true,
   "script": "./userFns.js",
   "mode": "page-same-domain",
