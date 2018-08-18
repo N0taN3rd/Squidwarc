@@ -1,18 +1,22 @@
+const puppeteer = require('puppeteer')
 const fs = require('fs-extra')
-const Frontier = require('./lib/frontier')
-const mode = require('./lib/frontier/modes').cmodePSD
+const {URL} = require('url')
+const mime = require('mime')
+const Path = require('path')
+const { Page } = require('puppeteer/lib/Page')
+const { TimeoutError } = require('puppeteer/lib/Errors')
+const outLinks = require('./lib/injectManager/pageInjects/collectLinks').outLinks
+
+const url = 'https://www.reuters.com/'
+const waits = { waitUntil: 'networkidle2' }
 
 async function doIt () {
-  const links = await fs.readJSON('links.json')
-  const frontier = new Frontier()
-  frontier.init({
-    url: 'https://www.reuters.com/',
-    depth: 1,
-    mode
-  })
-  while (!frontier.exhausted()) {
-    console.log(frontier.next())
-    frontier.process(links)
+  const discoveredLinks = await fs.readJSON('discovered.json')
+  let i = discoveredLinks.links.length
+  while (i--) {
+    const {href} = discoveredLinks.links[i]
+    const type = mime.getType(href)
+    console.log()
   }
 }
 
