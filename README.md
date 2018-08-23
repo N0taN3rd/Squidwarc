@@ -49,7 +49,7 @@ The application of the mode to the discovered seed is discussed in feature reque
 
 Run `npm install` or `yarn` before continuing in order to install the dependencies for this project.   
 
-Once the dependancies have been installed you can execute `$ ./run-crawler.sh -c conf.json` or `$ node index.js -c conf.json` to start crawling!
+Once the dependencies have been installed you can execute `$ ./run-crawler.sh -c conf.json` or `$ node index.js -c conf.json` to start crawling!
 
 Note that when using the provided `conf.json`, Squidwarc will automatically launch Chrome for you.
 
