@@ -35,6 +35,13 @@
   "devDependencies": {
     "@types/fs-extra": "^5.0.4",
     "benchmark": "^2.1.4",
+    "esdoc": "^1.1.0",
+    "esdoc-custom-theme": "^1.4.2",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-external-ecmascript-plugin": "^1.0.0",
+    "esdoc-external-nodejs-plugin": "^1.0.0",
+    "esdoc-node": "^1.0.3",
+    "esdoc-standard-plugin": "^1.0.0",
     "microtime": "^2.1.8",
     "prettier-standard": "^8.0.1",
     "snazzy": "^7.1.1",
