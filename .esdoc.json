@@ -1,0 +1,37 @@
+{
+  "source": "./lib",
+  "destination": "./docs",
+  "plugins": [
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "lint": {"enable": true},
+        "coverage": {"enable": true},
+        "accessor": {"access": ["public", "protected", "private"], "autoPrivate": true},
+        "undocumentIdentifier": {"enable": true},
+        "unexportedIdentifier": {"enable": false},
+        "typeInference": {"enable": true},
+        "brand": {
+          "logo": "./meta/logo.png",
+          "title": "Squidwarc",
+          "description": "A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head.",
+          "repository": "https://github.com/N0taN3rd/Squidwarc",
+          "author": "https://twitter.com/johnaberlin"
+        },
+        "manual": {
+          "index": "./manual/index.md",
+          "globalIndex": true,
+          "files": [
+            "./manual/overview.md",
+            "./manual/configuration.md",
+            "./manual/faq.md"
+          ]
+        }
+      }
+    },
+    {"name": "esdoc-external-nodejs-plugin", "option": {"enable": true}},
+    {"name": "esdoc-external-ecmascript-plugin", "option": {"enable": true}},
+    {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}},
+    {"name": "esdoc-node"}
+  ]
+}

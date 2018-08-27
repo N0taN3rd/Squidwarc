@@ -2,7 +2,9 @@
 <img alt="Squidwarc" src="https://github.com/N0taN3rd/Squidwarc/blob/master/meta/logo.png?raw=true" width="30%">
 </p>
 
-**Squidwarc** is a high fidelity, user scriptable, archival crawler that uses Chrome or Chromium with or without a head.
+# Squidwarc Features
+- User scripting api
+-
 
 **Squidwarc** aims to address the need for a high fidelity crawler akin to Heritrix while still being easy enough for the personal archivist to setup and use.
 
@@ -22,7 +24,7 @@ For more information about this see
 **Squidwarc** is built using Node.js and [chrome-remote-interface](https://github.com/cyrus-and/chrome-remote-interface).
 
 If you are unable to install Node on your system
-then **Squidwarc** highly recommends [WARCreate](http://warcreate.com/) or [WAIL](https://github.com/N0taN3rd/wail/releases).   
+then **Squidwarc** highly recommends [WARCreate](http://warcreate.com/) or [WAIL](https://github.com/N0taN3rd/wail/releases).
 WARCreate did this first and if it had not **Squidwarc** would not exist :two_hearts:
 
 If recording the web is what you seek, **Squidwarc** highly recommends [Webrecorder](https://webrecorder.io/).
@@ -45,11 +47,11 @@ More information about this terminology can be found via [ws-dl.blogspot.com](ht
 
 The mode set is currently applied to the initial seed list and any discovered seeds have ```page-only``` applied to them
 
-The application of the mode to the discovered seed is discussed in feature request [#13](https://github.com/N0taN3rd/Squidwarc/issues/13) 
+The application of the mode to the discovered seed is discussed in feature request [#13](https://github.com/N0taN3rd/Squidwarc/issues/13)
 
 # Usage
 
-Run `npm install` or `yarn` before continuing in order to install the dependencies for this project.   
+Run `npm install` or `yarn` before continuing in order to install the dependencies for this project.
 
 Once the dependencies have been installed you can execute `$ ./run-crawler.sh -c conf.json` or `$ node index.js -c conf.json` to start crawling!
 
@@ -67,19 +69,16 @@ The `config.json` file example below is provided for you without annotations as 
   "mode": "page-only", // the mode you wish to crawl using
   "depth": 1, // how many hops out do you wish to crawl
 
-  // path to the script you want Squidwarc to run per page. See `userFns.js` for more information
-  "script": "./userFns.js",
   // the crawls starting points
   "seeds": [
-    "https://www.instagram.com/visit_berlin/"
+    "https://www.reuters.com/"
   ],
 
   "warc": {
     "naming": "url" // currently this is the only option supported do not change.....
-    "append": false // do you want this crawl to use a save all preserved data to a single WARC or WARC per page
   },
-  
-  // Chrome instance we are to connect to is running on host, port.  
+
+  // Chrome instance we are to connect to is running on host, port.
   // must match --remote-debugging-port=<port> set when Squidwarc is connecting to an already running instance of  Chrome.
   // localhost is default host when only setting --remote-debugging-port
   "connect": {
@@ -87,11 +86,11 @@ The `config.json` file example below is provided for you without annotations as 
     "host": "localhost",
     "port": 9222
   },
-  
+
   // time is in milliseconds
   "crawlControl": {
-    "globalWait": 60000, // maximum time spent visiting a page 
-    "inflightIdle": 1000, // how long to wait for until network idle is determined when there are only `numInflight` (no response recieved) requests 
+    "globalWait": 60000, // maximum time spent visiting a page
+    "inflightIdle": 1000, // how long to wait for until network idle is determined when there are only `numInflight` (no response recieved) requests
     "numInflight": 2, // when there are only N inflight (no response recieved) requests start network idle count down
     "navWait": 8000 // wait at maxium 8s for Chrome to navigate to a page
   }

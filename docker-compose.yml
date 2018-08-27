@@ -1,0 +1,8 @@
+version: "3.1"
+services:
+  squidwarc:
+    build: .
+    image: squidwarc:latest
+    container_name: "squidwarc"
+    volumes:
+      - "<your path here>:/Squidwarc"

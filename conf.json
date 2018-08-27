@@ -1,8 +1,11 @@
 {
+  "use": "puppeteer",
+  "headless": true,
+  "script": "./userFns.js",
   "mode": "page-only",
   "depth": 1,
   "seeds": [
-    "https://www.reuters.com/"
+    "https://www.instagram.com/visit_berlin/"
   ],
   "warc": {
     "naming": "url"
