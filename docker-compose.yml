@@ -5,3 +5,4 @@ services:
     image: squidwarc:latest
     container_name: "squidwarc"
     volumes:
+      - "<your path here>:/Squidwarc"

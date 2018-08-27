@@ -1,3 +1,8 @@
+/**
+ * @external {Page} https://pptr.dev/#?product=Puppeteer&version=v1.7.0&show=api-class-page
+ * @param {Page} page
+ * @return {Promise<void>}
+ */
 module.exports = async function (page) {
   await page.evaluate(async function () {
     let scrollingTO = 2000

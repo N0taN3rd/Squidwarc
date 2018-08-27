@@ -41,4 +41,4 @@ RUN ./bootstrap.sh
 VOLUME /Squidwarc
 
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["/bin/bash"]
+CMD ["node", "index.js", "-c", "conf.json"]
