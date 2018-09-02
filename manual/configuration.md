@@ -12,7 +12,7 @@ Squidwarc uses `json` for its crawl configuration files and a
     seeds: [string] | path
     script: path
     warc: {
-      name: string
+      naming: string
       output: path
       append: bool
     }
