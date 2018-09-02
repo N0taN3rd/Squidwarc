@@ -1,8 +1,10 @@
 # Crawl Configuration
 
 ### Fields
-Squidwarc uses `json` for its crawl configuration files and a
 
+Squidwarc uses `json` for its crawl configuration files and seedList files.
+
+The schema of the allowed values of the configuration file is displayed below
 ```
 {
     use: string
@@ -15,11 +17,15 @@ Squidwarc uses `json` for its crawl configuration files and a
       naming: string
       output: path
       append: bool
+      isPartOf: string
+      infoDescription: string
     }
     connect: {
       host: string
       port: string
       launch: bool
+      userDataDir: string
+      executable: string | path
     }
     crawlControl: {
       globalWait: int,
