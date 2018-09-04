@@ -4,6 +4,8 @@
  * @return {Promise<void>}
  */
 module.exports = async function (page) {
+  // scrolls the page until the page cannot be scrolled
+  // some more or we have scrolled 20 times
   await page.evaluate(async function () {
     let scrollingTO = 2000
     let lastScrolled = Date.now()
@@ -40,6 +42,8 @@ module.exports = async function (page) {
       }, 200)
     })
   })
+  // extracts and fetches the values of the srcset attribute
+  // from all elements in the page
   await page.$$eval('*[srcset]', async ss => {
     const noop = () => {}
     const doFetch = url => fetch(url).catch(noop)

@@ -5,7 +5,10 @@
   "license": "GPL-3.0",
   "scripts": {
     "lint": "standard | snazzy",
-    "lint-fix": "standard --fix"
+    "lint-fix": "standard --fix",
+    "format": "prettier-standard 'lib/**/*.js'",
+    "docs": "esdoc",
+    "publish-docs": "gh-pages -d docs"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
@@ -21,7 +24,6 @@
     "moment": "^2.22.2",
     "node-warc": "^2.0.0",
     "normalize-url": "^3.3.0",
-    "npm-check-updates": "^2.14.2",
     "parse-domain": "^2.1.2",
     "pretty-error": "^2.1.1",
     "pretty-ms": "^3.2.0",
@@ -40,8 +42,10 @@
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-external-ecmascript-plugin": "^1.0.0",
     "esdoc-external-nodejs-plugin": "^1.0.0",
+    "esdoc-inject-style-plugin": "^1.0.0",
     "esdoc-node": "^1.0.3",
     "esdoc-standard-plugin": "^1.0.0",
+    "gh-pages": "^1.2.0",
     "microtime": "^2.1.8",
     "prettier-standard": "^8.0.1",
     "snazzy": "^8.0.0",

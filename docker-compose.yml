@@ -5,4 +5,5 @@ services:
     image: squidwarc:latest
     container_name: "squidwarc"
     volumes:
-      - "<your path here>:/Squidwarc"
+      - "<path to local directory>:/Squidwarc/warcs"
+    shm_size: 1G
