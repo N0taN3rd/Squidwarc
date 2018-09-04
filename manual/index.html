@@ -31,12 +31,12 @@
 <div data-ice="manual">
     <ul class="manual-toc">
       
-    <li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#out-of-the-box-crawls" data-ice="link">Out Of The Box Crawls</a></li>
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#installation" data-ice="link">Installation</a></li>
+<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#usage" data-ice="link">Usage</a></li>
+<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#out-of-the-box-crawls" data-ice="link">Out Of The Box Crawls</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page-only" data-ice="link">Page Only</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page---same-domain-links" data-ice="link">Page + Same Domain Links</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page---links" data-ice="link">Page + Links</a></li>
-<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#installation" data-ice="link">Installation</a></li>
-<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#usage" data-ice="link">Usage</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -75,7 +75,7 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="github-markdown">
-  <div class="manual-user-index" data-ice="manualUserIndex"><h1 id="features">Features</h1><ul>
+  <div class="manual-user-index" data-ice="manualUserIndex"><h1 id="squidwarc">Squidwarc</h1><h2 id="features">Features</h2><ul>
 <li>High fidelity web archiving</li>
 <li><a href="manual/configuration.html#script">User scriptable</a></li>
 <li>Designed for the personal archivist and power users alike</li>
@@ -89,10 +89,10 @@
 <li><a href="https://arxiv.org/abs/1601.05142">Adapting the Hypercube Model to Archive Deferred Representations and Their Descendants</a></li>
 <li><a href="http://ws-dl.blogspot.com/2012/10/2012-10-10-zombies-in-archives.html">2012-10-10: Zombies in the Archives</a></li>
 <li><a href="http://ws-dl.blogspot.com/2013/11/2013-11-28-replaying-sopa-protest.html">2013-11-28: Replaying the SOPA Protest</a></li>
-<li><a href="http://ws-dl.blogspot.ca/2015/06/2015-06-26-phantomjsvisualevent-or.html">2015-06-26: PhantomJS+VisualEvent or Selenium for Web Archiving?</a></li>
+<li><a href="http://ws-dl.blogspot.com/2015/06/2015-06-26-phantomjsvisualevent-or.html">2015-06-26: PhantomJS+VisualEvent or Selenium for Web Archiving?</a></li>
 </ul>
 <h1 id="quick-start">Quick Start</h1><p>Requirements: <a href="https://nodejs.org/en/">Node.js</a></p>
-<p>If Docker is more your thing, then Squidwarc provides docker and compose file for your use.</p>
+<p>If Docker is more your thing, then Squidwarc provides a docker and docker-compose file for your use.</p>
 <pre><code class="lang-shell"><code class="source-code prettyprint">git clone https://github.com/N0taN3rd/Squidwarc.git
 
 cd Squidwarc
@@ -102,7 +102,7 @@ cd Squidwarc
 ./run-crawl.sh -c conf.json</code>
 </code></pre>
 <p>To learn about how to configure crawls see the <a href="manual/configuration.html">Crawl Configuration</a> section of this manual.</p>
-<p>If running a crawler through the commandline is not your thing you can use <a href="https://github.com/peterk/warcworker">warcworker</a>,
+<p>If running a crawler through the commandline is not your thing, you can use <a href="https://github.com/peterk/warcworker">warcworker</a>,
 a dockerized web front end for Squidwarc by <a href="https://github.com/peterk">@peterk</a>.</p>
 </div>
 
@@ -112,11 +112,9 @@ a dockerized web front end for Squidwarc by <a href="https://github.com/peterk">
     
   <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>Usage</h1><p>To launch a crawl you can execute either</p><ul>
-<li><code>./run-crawler.sh -c conf.json</code></li>
-<li><code>node index.js -c conf.json</code></li>
-</ul><p>Docker usage:</p><p>Modify <code>volumes</code> field of the included docker-compose file to a local directory and place the crawl configuration file in it.</p><p>Please set the <code>warc</code> sub-field <code>output</code> to <code>./warcs</code> and then execute <code>docker-compose up</code> to launch the crawl!</p><p>For more information about the configuration file, please see the <a href="./manual/configuration.html">Crawl Configuration</a> section of this manual.</p></div>
-        <a data-ice="link" href="manual/overview.html#usage"></a>
+        <div data-ice="card"><h1>Out Of The Box Crawls</h1><h3>Page Only</h3><p>Preserve the only the page, no links are followed</p><h3>Page + Same Domain Links</h3><p>Page Only option plus preserve all links found on the page that are on the same domain as the page</p><h3>Page + Links</h3><p>Page + Same Domain Link option plus all links from other domains</p><p>For more information about the configuring a crawl using one of these modes, please see the description for the
+<a href="./manual/configuration.html#mode">mode</a> field of a crawls config file.</p></div>
+        <a data-ice="link" href="manual/overview.html#out-of-the-box-crawls"></a>
       </div>
     </div>
 <div class="manual-card-wrap" data-ice="cards">

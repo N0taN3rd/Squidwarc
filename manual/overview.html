@@ -31,12 +31,12 @@
 <div data-ice="manual">
     <ul class="manual-toc">
       
-    <li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#out-of-the-box-crawls" data-ice="link">Out Of The Box Crawls</a></li>
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#installation" data-ice="link">Installation</a></li>
+<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#usage" data-ice="link">Usage</a></li>
+<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#out-of-the-box-crawls" data-ice="link">Out Of The Box Crawls</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page-only" data-ice="link">Page Only</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page---same-domain-links" data-ice="link">Page + Same Domain Links</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page---links" data-ice="link">Page + Links</a></li>
-<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#installation" data-ice="link">Installation</a></li>
-<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#usage" data-ice="link">Usage</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -74,12 +74,7 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="out-of-the-box-crawls">Out Of The Box Crawls</h1><h3 id="page-only">Page Only</h3><p>Preserve the only the page, no links are followed</p>
-<h3 id="page---same-domain-links">Page + Same Domain Links</h3><p>Page Only option plus preserve all links found on the page that are on the same domain as the page</p>
-<h3 id="page---links">Page + Links</h3><p>Page + Same Domain Link option plus all links from other domains</p>
-<p>For more information about the configuring a crawl using one of these modes, please see the description for the
-<a href="./manual/configuration.html#mode">mode</a> field of a crawls config file.</p>
-<h1 id="installation">Installation</h1><p>Requirements: <a href="https://nodejs.org/en/">Node.js</a></p>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="installation">Installation</h1><p>Requirements: <a href="https://nodejs.org/en/">Node.js</a></p>
 <pre><code class="lang-shell"><code class="source-code prettyprint">git clone https://github.com/N0taN3rd/Squidwarc.git
 
 cd Squidwarc
@@ -96,6 +91,11 @@ cd Squidwarc
 <p>Modify <code>volumes</code> field of the included docker-compose file to a local directory and place the crawl configuration file in it.</p>
 <p>Please set the <code>warc</code> sub-field <code>output</code> to <code>./warcs</code> and then execute <code>docker-compose up</code> to launch the crawl!</p>
 <p>For more information about the configuration file, please see the <a href="./manual/configuration.html">Crawl Configuration</a> section of this manual.</p>
+<h1 id="out-of-the-box-crawls">Out Of The Box Crawls</h1><h3 id="page-only">Page Only</h3><p>Preserve the only the page, no links are followed</p>
+<h3 id="page---same-domain-links">Page + Same Domain Links</h3><p>Page Only option plus preserve all links found on the page that are on the same domain as the page</p>
+<h3 id="page---links">Page + Links</h3><p>Page + Same Domain Link option plus all links from other domains</p>
+<p>For more information about the configuring a crawl using one of these modes, please see the description for the
+<a href="./manual/configuration.html#mode">mode</a> field of a crawls config file.</p>
 </div>
 </div>
 
