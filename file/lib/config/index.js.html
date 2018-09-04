@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/config/index.js | Squidwarc</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Squidwarc"><meta property="twitter:description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/N0taN3rd/Squidwarc"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-runPromise">runPromise</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/config/index.js~Config.html">Config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ChromeOptions">ChromeOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-CrawlConfig">CrawlConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-CrawlControl">CrawlControl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UserScript">UserScript</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-VersionInfo">VersionInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WARCOptions">WARCOptions</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#crawler">crawler</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/chrome.js~ChromeCrawler.html">ChromeCrawler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/helper.js~Helper.html">Helper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/navigationMan.js~NavigationMan.html">NavigationMan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/netIdleWatcher.js~NetIdleWatcher.html">NetIdleWatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/puppeteer.js~PuppeteerCrawler.html">PuppeteerCrawler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NetIdleOptions">NetIdleOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://pptr.dev/#?product=Puppeteer&amp;version=v1.7.0&amp;show=api-class-page">Page</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#frontier">frontier</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/helper.js~FrontierHelper.html">FrontierHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/index.js~Frontier.html">Frontier</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/seedTracker.js~SeedTracker.html">SeedTracker</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Seed">Seed</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#injectmanager">injectManager</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/injectManager/index.js~InjectManager.html">InjectManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-OnLoadInject">OnLoadInject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-OnNewDocumentInject">OnNewDocumentInject</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#injectmanager-pageinjects">injectManager/pageInjects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-collect">collect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initCollectLinks">initCollectLinks</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-outLinks">outLinks</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-noNaughtyJS">noNaughtyJS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scrollOnLoad">scrollOnLoad</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scrollPage">scrollPage</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#launcher">launcher</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/launcher/chrome.js~ChromeLauncher.html">ChromeLauncher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/launcher/chromeFinder.js~ChromeFinder.html">ChromeFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-launch">launch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/cyrus-and/chrome-remote-interface">CRI</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#runners">runners</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chromeRunner">chromeRunner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-puppeteerRunner">puppeteerRunner</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/utils/colorPrinters.js~ColorPrinters.html">ColorPrinters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/utils/warcNaming.js~WARCNaming.html">WARCNaming</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isEmptyPlainObject">isEmptyPlainObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-delay">delay</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-makeRunnable">makeRunnable</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/config/index.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ Squidwarc  Copyright (C) 2017-present  John Berlin &lt;n0tan3rd@gmail.com&gt;
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ Squidwarc is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this Squidwarc.  If not, see &lt;http://www.gnu.org/licenses/&gt;
+ */
+
+&apos;use strict&apos;
+const path = require(&apos;path&apos;)
+const { inspect } = require(&apos;util&apos;)
+const fs = require(&apos;fs-extra&apos;)
+const untildify = require(&apos;untildify&apos;)
+const { defaultOpts } = require(&apos;../defaults&apos;)
+const cp = require(&apos;../utils/colorPrinters&apos;)
+const FH = require(&apos;../frontier/helper&apos;)
+
+/**
+ * @desc Informs the user that they did not export the correct type of user script
+ * @param {any} exposed
+ */
+function badExport (exposed) {
+  console.log(cp.chalk`{bold.red Squidwarc does not know how to handled the supplied script:
+You supplied a ${typeof exposed}:
+    ${inspect(exposed, { depth: null })}}
+`)
+  console.log(cp.chalk.bold.blue(&apos;Please export a function similar to:&apos;))
+  console.log(cp.chalk.bold.blue(&apos;module.exports = async function (page) {....}&apos;))
+}
+
+/**
+ * @desc Informs the user that they did not export an async function
+ * @param {any} notAsyncFn
+ */
+function notAsync (notAsyncFn) {
+  console.log(cp.chalk`{bold.red Squidwarc expects the function exported by user scripts to be async functions
+You supplied:
+    ${notAsyncFn.toString()}}`)
+  console.log(cp.chalk.bold.blue(&apos;Please export a function similar to:&apos;))
+  console.log(cp.chalk.bold.blue(&apos;module.exports = async function (page) {....}&apos;))
+}
+
+/**
+ * @desc Informs the user that the user script is good
+ */
+function usrFNGood () {
+  console.log(cp.chalk`{bold.green With great power comes great responsibility!}
+{bold.red Squidwarc is not responsible for ill behaved user supplied scripts!}
+`)
+}
+
+/**
+ * @desc Crawl config loader
+ */
+class Config {
+  /**
+   * @desc Loads the config file and performs the preliminary normalization
+   * @param {string} configPath - Path to this crawls config file
+   * @returns {Promise&lt;CrawlConfig&gt;}
+   */
+  static async loadConfig (configPath) {
+    let {
+      use = &apos;chrome&apos;,
+      headless = true,
+      mode = &apos;page-only&apos;,
+      depth = 1,
+      connect = defaultOpts.connect,
+      crawlControl = defaultOpts.crawlControl,
+      warc = defaultOpts.warc,
+      seeds,
+      script
+    } = await fs.readJSON(configPath)
+    connect.host = connect.host || defaultOpts.connect.host
+    connect.port = connect.port || defaultOpts.connect.port
+    connect.launch = connect.launch || defaultOpts.connect.launch
+    warc.naming = warc.naming || defaultOpts.warc.naming
+    warc.output = warc.output || defaultOpts.warc.output
+    warc.append = warc.append || defaultOpts.warc.append
+    const versionInfo = {}
+    versionInfo.isPartOf = warc.isPartOf || defaultOpts.versionInfo.isPartOfV
+    versionInfo.warcInfoDescription =
+      warc.infoDescription || defaultOpts.versionInfo.warcInfoDescription
+    script = await Config.ensureScript(script)
+    if (script != null &amp;&amp; use === &apos;chrome&apos;) {
+      use = &apos;puppeteer&apos;
+    }
+    seeds = await Config.ensureSeeds(seeds, mode, depth)
+    return {
+      chrome: {
+        use,
+        headless,
+        local: false,
+        ...connect
+      },
+      mode,
+      depth,
+      crawlControl,
+      warc,
+      seeds,
+      script,
+      versionInfo
+    }
+  }
+
+  /**
+   * @desc Load the user supplied script (if it exists) and perform validation of it
+   * @param {?string} scriptP - The path to the user script
+   * @returns {Promise&lt;UserScript | null&gt;}
+   */
+  static async ensureScript (scriptP) {
+    if (scriptP == null) {
+      return null
+    }
+    if (typeof scriptP !== &apos;string&apos;) {
+      cp.bred(
+        `The value for the script field found in the supplied config is not a &quot;string&quot; it is a ${typeof scriptP}`
+      )
+      cp.bred(
+        &apos;To have Squidwarc use a script during crawling please use a string that is a path to the script&apos;
+      )
+      return null
+    }
+    const scriptPath = path.resolve(untildify(scriptP))
+    if (!await fs.pathExists(scriptPath)) {
+      cp.bred(
+        `The supplied script path does not exist ${scriptP} [resolved path = ${scriptPath}]`
+      )
+      return null
+    }
+
+    let good = true
+    let userFN
+
+    try {
+      userFN = require(scriptPath)
+    } catch (e) {
+      cp.error(&apos;Squidwarc is unable to use the supplied user script due to an error!&apos;, e)
+      good = false
+    }
+
+    if (good &amp;&amp; typeof userFN !== &apos;function&apos;) {
+      badExport(userFN)
+      good = false
+    }
+
+    if (good &amp;&amp; userFN[Symbol.toStringTag] !== &apos;AsyncFunction&apos;) {
+      notAsync(userFN)
+      good = false
+    }
+
+    if (good) {
+      usrFNGood()
+    }
+
+    return userFN
+  }
+
+  /**
+   * @desc Normalizes the supplied seeds. If it value of the seeds field is a string loads the seeds from the file
+   * @param {string | string[]} seeds - The seeds to be normalized
+   * @param {string} mode             - The crawl mode for the seeds
+   * @param {number} depth            - The depth of the crawl
+   * @return {Promise&lt;Seed | Seed[]&gt;}
+   */
+  static async ensureSeeds (seeds, mode, depth) {
+    if (!Array.isArray(seeds)) {
+      if (typeof seeds !== &apos;string&apos;) {
+        throw new Error(
+          `The value of the seeds field was not an Array\nExpecting a sting that is path to a seeds file.\nSquidwarc found &quot;${typeof seeds}&quot;`
+        )
+      }
+      seeds = untildify(seeds)
+      const seedPathExists = await fs.pathExists(seeds)
+      if (!seedPathExists) {
+        throw new Error(
+          `The path to the seed list file contained in the seeds field does not exist`
+        )
+      }
+      seeds = await fs.readJSON(seeds)
+      if (!Array.isArray(seeds)) {
+        throw new Error(
+          `The contents of the seeds file is not an array. Squidwarc found &quot;${typeof seeds}&quot;`
+        )
+      }
+    }
+    return FH.normalizeSeeds(seeds, mode, depth)
+  }
+}
+
+/**
+ * @type {Config}
+ */
+module.exports = Config
+
+/**
+ * @typedef {Object} WARCOptions
+ * @property {string} [naming = url] - The naming scheme to be used for WARC generation
+ * @property {string} [output = &lt;current working directory&gt;] - Path to the directory the WARCs are to be created in
+ * @property {boolean} [append = false] - Should Squidwarc create a single WARC file for the crawl or no
+ */
+
+/**
+ * @typedef {Object} CrawlControl
+ * @property {number} [globalWait = 60000]  - Maximum amount of time, in milliseconds, that Squidwarc should wait before generating a WARC and moving to the next URL
+ * @property {number} [numInflight = 2]     - The number of inflight requests (requests with no response) that should exist before starting the inflightIdle timer
+ * @property {number} [inflightIdle = 1000] - Amount of time, in milliseconds, that should elapse when there are only numInflight requests for network idle to be determined
+ * @property {number} [navWait = 8000]      - Maximum amount of time, in milliseconds, that Squidwarc should wait for indication that the browser has navigated to the page being crawled
+ */
+
+/**
+ * @typedef {Object} VersionInfo
+ * @property {string} [isPartOfV = Squidwarc Crawl] - The value for the isPartOf field of the WARC Info Record
+ * @property {string} [warcInfoDescription = High fidelity preservation using Squidwarc] - The value for the description field of the WARC Info Record
+ */
+
+/**
+ * @typedef {function(page: Page): Promise&lt;void&gt;} UserScript - A user supplied function that Squidwarc will execute once network idle has been reached
+ */
+
+/**
+ * @typedef {Object} ChromeOptions
+ * @property {string}  [use = chrome]     - Should Squidwarc connect directly to Chrome/Chromium or via puppeteer
+ * @property {string}  [executable]   - Path to the browser executable or command to be use to launch the browser
+ * @property {string}  [userDataDir]      - Path to a user data directory (generated by Chrome/Chromium) to be used rather than a temporary one
+ * @property {string}  [host = localhost] - The host name the browsers CDP endpoint is listing on
+ * @property {number}  [port = 9222]      - The port number the browsers CDP endpoint is listing on
+ * @property {boolean} [launch = true]    - Should Squidwarc launch and manage the browser or connect to an already running instance
+ * @property {boolean} [headless = true]  - Should the browser used by Squidwarc be launched in headless mode
+ * @property {boolean} [local = false]    - Should the CDP descriptor used by the chrome-remote-interface use the local CDP descriptor or fetch it from the browser connecting to
+ */
+
+/**
+ * @typedef {Object} CrawlConfig
+ * @property {ChromeOptions}  chrome      - Information about how to connect to or launch Chrome/Chromium
+ * @property {string}  [mode = page-only] - The mode this crawl is to be operating in
+ * @property {number}  [depth = 1]        - The depth of this crawl
+ * @property {CrawlControl} crawlControl  - Options for fine tuning the crawl
+ * @property {WARCOptions} warc           - Options for how this crawls WARCs should be created
+ * @property {VersionInfo} versionInfo    - Information to be included in the WARC Info record fields per page preserved
+ * @property {Seed | Seed[]} seeds        - The seed(s) to be crawled
+ * @property {UserScript} [script]        - A script to be run when using puppeteer. If the value of this correct, use defaults to puppeteer
+ */
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

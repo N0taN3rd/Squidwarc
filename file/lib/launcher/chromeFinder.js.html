@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/launcher/chromeFinder.js | Squidwarc</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Squidwarc"><meta property="twitter:description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/N0taN3rd/Squidwarc"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-runPromise">runPromise</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/config/index.js~Config.html">Config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ChromeOptions">ChromeOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-CrawlConfig">CrawlConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-CrawlControl">CrawlControl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UserScript">UserScript</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-VersionInfo">VersionInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WARCOptions">WARCOptions</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#crawler">crawler</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/chrome.js~ChromeCrawler.html">ChromeCrawler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/helper.js~Helper.html">Helper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/navigationMan.js~NavigationMan.html">NavigationMan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/netIdleWatcher.js~NetIdleWatcher.html">NetIdleWatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/puppeteer.js~PuppeteerCrawler.html">PuppeteerCrawler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NetIdleOptions">NetIdleOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://pptr.dev/#?product=Puppeteer&amp;version=v1.7.0&amp;show=api-class-page">Page</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#frontier">frontier</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/helper.js~FrontierHelper.html">FrontierHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/index.js~Frontier.html">Frontier</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/seedTracker.js~SeedTracker.html">SeedTracker</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Seed">Seed</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#injectmanager">injectManager</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/injectManager/index.js~InjectManager.html">InjectManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-OnLoadInject">OnLoadInject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-OnNewDocumentInject">OnNewDocumentInject</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#injectmanager-pageinjects">injectManager/pageInjects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-collect">collect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initCollectLinks">initCollectLinks</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-outLinks">outLinks</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-noNaughtyJS">noNaughtyJS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scrollOnLoad">scrollOnLoad</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scrollPage">scrollPage</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#launcher">launcher</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/launcher/chrome.js~ChromeLauncher.html">ChromeLauncher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/launcher/chromeFinder.js~ChromeFinder.html">ChromeFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-launch">launch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/cyrus-and/chrome-remote-interface">CRI</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#runners">runners</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chromeRunner">chromeRunner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-puppeteerRunner">puppeteerRunner</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/utils/colorPrinters.js~ColorPrinters.html">ColorPrinters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/utils/warcNaming.js~WARCNaming.html">WARCNaming</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isEmptyPlainObject">isEmptyPlainObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-delay">delay</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-makeRunnable">makeRunnable</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/launcher/chromeFinder.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ Squidwarc  Copyright (C) 2017-present  John Berlin &lt;n0tan3rd@gmail.com&gt;
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ Squidwarc is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this Squidwarc.  If not, see &lt;http://www.gnu.org/licenses/&gt;
+ */
+
+const cp = require(&apos;child_process&apos;)
+const path = require(&apos;path&apos;)
+const fs = require(&apos;fs-extra&apos;)
+
+/**
+ * @type {RegExp}
+ */
+const nlre = /\r?\n/
+/**
+ * @type {RegExp}
+ */
+const desktopArgRE = /(^[^ ]+).*/
+
+/**
+ * @desc Executes the supplied command
+ * @param {string} someCommand
+ * @param {boolean} [rejectOnError = false]
+ * @returns {Promise&lt;string&gt;}
+ */
+function exec (someCommand, rejectOnError = false) {
+  return new Promise((resolve, reject) =&gt; {
+    cp.exec(someCommand, { encoding: &apos;utf8&apos; }, (error, stdout, stderr) =&gt; {
+      if (error &amp;&amp; rejectOnError) reject(error)
+      resolve(stdout.trim())
+    })
+  })
+}
+
+/**
+ * @desc Executes the which command for the supplied executable name
+ * @param {string} executable
+ */
+function which (executable) {
+  return exec(`which ${executable}`)
+}
+
+/**
+ * @desc Executes the ls command for the supplied path looking for .desktop files for Chrome or Chromium
+ * @param {string} desktopPath
+ * @returns {Promise&lt;string[]&gt;}
+ */
+function chromeDesktops (desktopPath) {
+  // eslint-disable-next-line
+  return exec(`ls ${desktopPath} | grep -E &quot;\/.*\/(google|chrome|chromium)-.*&quot;`).then(
+    results =&gt; results.split(nlre)
+  )
+}
+
+/**
+ * @desc Extracts the Chrome or Chromium executable path from the .desktop file
+ * @param {string} desktopPath
+ * @returns {Promise&lt;string[]&gt;}
+ */
+async function desktopExePath (desktopPath) {
+  let maybeResults
+  // eslint-disable-next-line
+  const patternPipe = `&quot;^Exec=\/.*\/(google|chrome|chromium)-.*&quot; ${desktopPath} | awk -F &apos;=&apos; &apos;{print $2}&apos;`
+  try {
+    maybeResults = await exec(`grep -ER ${patternPipe}`, true)
+  } catch (e) {
+    maybeResults = await exec(`grep -Er ${patternPipe}`)
+  }
+  const seen = new Set()
+  let keep
+  return maybeResults
+    .split(nlre)
+    .map(execPath =&gt; execPath.replace(desktopArgRE, &apos;$1&apos;))
+    .filter(exePath =&gt; {
+      keep = !seen.has(exePath)
+      seen.add(exePath)
+      return keep
+    })
+}
+
+/**
+ * @desc Tests (T|F) to see if the execPath is executable by this process
+ * @param {string} execPath - The executable path to test
+ * @returns {Promise&lt;boolean&gt;}
+ */
+async function bingo (execPath) {
+  if (!execPath || execPath === &apos;&apos;) return false
+  try {
+    await fs.access(execPath, fs.constants.X_OK)
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
+/**
+ * @desc Utility class that provides functionality for finding an suitable chrome executable
+ */
+class ChromeFinder {
+  /**
+   * @desc Finds an acceptable Chrome or Chromium executable.
+   * If the env key &apos;CHROME_PATH&apos; is defined that is returned by default
+   * @returns {Promise&lt;string&gt;}
+   */
+  static async findChrome () {
+    if (await bingo(process.env.CHROME_PATH)) {
+      return process.env.CHROME_PATH
+    }
+    let plat = process.platform
+    if (plat === &apos;linux&apos;) {
+      return ChromeFinder.findChromeLinux()
+    } else if (plat === &apos;darwin&apos;) {
+      return ChromeFinder.findChromeDarwin()
+    } else if (plat === &apos;win32&apos;) {
+      return ChromeFinder.findChromeWindows()
+    } else {
+      throw new Error(`Unsupported platform ${plat}`)
+    }
+  }
+
+  /**
+   * @desc Finds an acceptable Chrome or Chromium executable on Linux
+   * If one is not found throws
+   * @throws Error - If an acceptable executable was not found
+   * @returns {Promise&lt;string&gt;}
+   */
+  static async findChromeLinux () {
+    const execs = [
+      &apos;google-chrome-unstable&apos;,
+      &apos;google-chrome-beta&apos;,
+      &apos;google-chrome-stable&apos;,
+      &apos;chromium-browser&apos;,
+      &apos;chromium&apos;
+    ]
+    let i = 0
+    let len = execs.length
+    let commandResults
+    // check which exec first
+    while (i &lt; len) {
+      commandResults = await which(execs[i])
+      if (await bingo(commandResults)) {
+        return commandResults
+      }
+      i += 1
+    }
+    // which executable did not result in an exe so we must now check desktop files
+    const desktops = [
+      &apos;/usr/share/applications/*.desktop&apos;,
+      &apos;~/.local/share/applications/*.desktop&apos;
+    ]
+    len = desktops.length
+    let len2
+    let j = 0
+    i = 0
+    let found = []
+    while (i &lt; len) {
+      commandResults = await chromeDesktops(desktops[i])
+      len2 = commandResults.length
+      while (j &lt; len2) {
+        found = found.concat(await desktopExePath(commandResults[j]))
+        j += 1
+      }
+      i += 1
+    }
+    const desiredExes = [
+      { regex: /google-chrome-unstable$/, weight: 52 },
+      { regex: /google-chrome-beta$/, weight: 51 },
+      { regex: /google-chrome-stable$/, weight: 50 },
+      { regex: /google-chrome$/, weight: 49 },
+      { regex: /chrome-wrapper$/, weight: 48 },
+      { regex: /chromium-browser$/, weight: 47 },
+      { regex: /chromium$/, weight: 46 }
+    ]
+    let sortedExes = found
+      .map(exep =&gt; {
+        for (const desired of desiredExes) {
+          if (desired.regex.test(exep)) {
+            return { exep, weight: desired.weight }
+          }
+        }
+        return { exep, weight: 10 }
+      })
+      .sort((a, b) =&gt; b.weight - a.weight)
+      .map(pair =&gt; pair.exep)
+    if (sortedExes.length &gt; 0) {
+      return sortedExes[0]
+    }
+    throw new Error(&apos;No Chrome Installations Found&apos;)
+  }
+
+  /**
+   * @desc Finds an acceptable Chrome or Chromium executable on MacOS
+   * If one is not found throws
+   * @throws Error - If an acceptable executable was not found
+   * @returns {Promise&lt;string&gt;}
+   */
+  static async findChromeDarwin () {
+    // shamelessly borrowed from chrome-launcher (https://github.com/GoogleChrome/chrome-launcher/blob/master/chrome-finder.ts)
+    const suffixes = [
+      &apos;/Contents/MacOS/Google Chrome Canary&apos;,
+      &apos;/Contents/MacOS/Google Chrome&apos;
+    ]
+
+    const LSREGISTER =
+      &apos;/System/Library/Frameworks/CoreServices.framework&apos; +
+      &apos;/Versions/A/Frameworks/LaunchServices.framework&apos; +
+      &apos;/Versions/A/Support/lsregister&apos;
+    const nlre = /\r?\n/
+    const installations = []
+
+    let commandResults = await exec(
+      `${LSREGISTER} -dump | grep -i &apos;google chrome\\( canary\\)\\?.app$&apos; | awk &apos;{$1=&quot;&quot; print $0}&apos;`
+    )
+    let i = 0
+    let split = commandResults.split(nlre)
+    let len = split.length
+    let execPath
+    let inst
+
+    while (i &lt; len) {
+      inst = split[i]
+      execPath = path.join(inst.trim(), suffixes[0])
+      if (await bingo(execPath)) {
+        installations.push(execPath)
+      }
+      execPath = path.join(inst.trim(), suffixes[1])
+      if (await bingo(execPath)) {
+        installations.push(execPath)
+      }
+      i += 1
+    }
+
+    // Retains one per line to maintain readability.
+    // clang-format off
+    const priorities = [
+      { regex: new RegExp(`^${process.env.HOME}/Applications/.*Chrome.app`), weight: 50 },
+      {
+        regex: new RegExp(`^${process.env.HOME}/Applications/.*Chrome Canary.app`),
+        weight: 51
+      },
+      { regex: /^\/Applications\/.*Chrome.app/, weight: 100 },
+      { regex: /^\/Applications\/.*Chrome Canary.app/, weight: 101 },
+      { regex: /^\/Volumes\/.*Chrome.app/, weight: -2 },
+      { regex: /^\/Volumes\/.*Chrome Canary.app/, weight: -1 }
+    ]
+
+    if (process.env.CHROME_PATH) {
+      priorities.unshift({ regex: new RegExp(`${process.env.CHROME_PATH}`), weight: 151 })
+    }
+    const defaultPriority = 10
+    let sortedExes = installations
+      // assign priorities
+      .map(inst =&gt; {
+        for (const pair of priorities) {
+          if (pair.regex.test(inst)) {
+            return { path: inst, weight: pair.weight }
+          }
+        }
+        return { path: inst, weight: defaultPriority }
+      })
+      // sort based on priorities
+      .sort((a, b) =&gt; b.weight - a.weight)
+      // remove priority flag
+      .map(pair =&gt; pair.path)[0]
+    if (sortedExes.length &gt; 0) {
+      return sortedExes[0]
+    }
+    throw new Error(&apos;No Chrome Installations Found&apos;)
+  }
+
+  /**
+   * @desc Finds an acceptable Chrome or Chromium executable on Windows
+   * If one is not found throws
+   * @throws Error - If an acceptable executable was not found
+   * @returns {Promise&lt;string&gt;}
+   */
+  static async findChromeWindows () {
+    // shamelessly borrowed from chrome-launcher (https://github.com/GoogleChrome/chrome-launcher/blob/master/chrome-finder.ts)
+    const installations = []
+    const suffixes = [
+      `${path.sep}Google${path.sep}Chrome SxS${path.sep}Application${path.sep}chrome.exe`,
+      `${path.sep}Google${path.sep}Chrome${path.sep}Application${path.sep}chrome.exe`
+    ]
+    const prefixes = [
+      process.env.LOCALAPPDATA,
+      process.env.PROGRAMFILES,
+      process.env[&apos;PROGRAMFILES(X86)&apos;]
+    ].filter(Boolean)
+
+    if (process.env.CHROME_PATH &amp;&amp; (await bingo(process.env.CHROME_PATH))) {
+      installations.push(process.env.CHROME_PATH)
+    }
+
+    let i = 0
+    let j = 0
+    let len = prefixes.length
+    let len2 = suffixes.length
+    let chromePath
+    while (i &lt; len) {
+      while (j &lt; len2) {
+        chromePath = path.join(prefixes[i], suffixes[j])
+        if (await bingo(chromePath)) {
+          installations.push(chromePath)
+        }
+        j += 1
+      }
+      i += 1
+    }
+    if (installations.length &gt; 0) {
+      return installations[0]
+    }
+    throw new Error(&apos;No Chrome Installations Found&apos;)
+  }
+}
+
+/**
+ * @type {ChromeFinder}
+ */
+module.exports = ChromeFinder
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

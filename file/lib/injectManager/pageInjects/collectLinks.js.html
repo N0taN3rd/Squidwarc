@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">lib/injectManager/pageInjects/collectLinks.js | Squidwarc</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Squidwarc"><meta property="twitter:description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/N0taN3rd/Squidwarc"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-runPromise">runPromise</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/config/index.js~Config.html">Config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ChromeOptions">ChromeOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-CrawlConfig">CrawlConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-CrawlControl">CrawlControl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UserScript">UserScript</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-VersionInfo">VersionInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WARCOptions">WARCOptions</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#crawler">crawler</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/chrome.js~ChromeCrawler.html">ChromeCrawler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/helper.js~Helper.html">Helper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/navigationMan.js~NavigationMan.html">NavigationMan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/netIdleWatcher.js~NetIdleWatcher.html">NetIdleWatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/puppeteer.js~PuppeteerCrawler.html">PuppeteerCrawler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NetIdleOptions">NetIdleOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://pptr.dev/#?product=Puppeteer&amp;version=v1.7.0&amp;show=api-class-page">Page</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#frontier">frontier</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/helper.js~FrontierHelper.html">FrontierHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/index.js~Frontier.html">Frontier</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/seedTracker.js~SeedTracker.html">SeedTracker</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Seed">Seed</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#injectmanager">injectManager</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/injectManager/index.js~InjectManager.html">InjectManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-OnLoadInject">OnLoadInject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-OnNewDocumentInject">OnNewDocumentInject</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#injectmanager-pageinjects">injectManager/pageInjects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-collect">collect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initCollectLinks">initCollectLinks</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-outLinks">outLinks</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-noNaughtyJS">noNaughtyJS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scrollOnLoad">scrollOnLoad</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scrollPage">scrollPage</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#launcher">launcher</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/launcher/chrome.js~ChromeLauncher.html">ChromeLauncher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/launcher/chromeFinder.js~ChromeFinder.html">ChromeFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-launch">launch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/cyrus-and/chrome-remote-interface">CRI</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#runners">runners</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chromeRunner">chromeRunner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-puppeteerRunner">puppeteerRunner</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/utils/colorPrinters.js~ColorPrinters.html">ColorPrinters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/utils/warcNaming.js~WARCNaming.html">WARCNaming</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isEmptyPlainObject">isEmptyPlainObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-delay">delay</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-makeRunnable">makeRunnable</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/injectManager/pageInjects/collectLinks.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ Squidwarc  Copyright (C) 2017-present  John Berlin &lt;n0tan3rd@gmail.com&gt;
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ Squidwarc is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this Squidwarc.  If not, see &lt;http://www.gnu.org/licenses/&gt;
+ */
+
+/**
+ * @desc Function that is injected into every frame of the page currently being crawled that will
+ * setup the outlink collection depending if the frame injected into is the top frame or a sub frame.
+ *
+ * If this function is injected into the top frame an instance of Collector / TopHandler are created otherwise
+ * only an instance of Collector is created.
+ *
+ * In the case of injection into the top frame the `$$$$Squidwarc$$Collector$$$$` property will be defined on
+ * window with value of the created TopHandler instance and `message` event listener will be registered on window for
+ * receiving messages sent by this script when injected into child frames.
+ *
+ * Each child frame will send two messages (`indicateIsChild`, `outlinkgot`) and listen for one (`outlinkcollect`).
+ * The message types are found in the object m within the body of this function.
+ * The `indicateIsChild` message is sent immediately by a child frames to allow TopHandler can hold onto a reference to the frame for communicating with it.
+ * The `outlinkgot` message is sent by each child frame to the top frame once outlinks have been collected for that frame.
+ * The `outlinkcollect` message is sent by TopHandler to each child frame to have it start collecting outlinks.
+ * @return {void}
+ */
+exports.initCollectLinks = function initCollectLinks () {
+  let isIframe
+  try {
+    isIframe = window.self !== window.top
+  } catch (e) {
+    isIframe = true
+  }
+
+  /**
+   * @desc Performs the outlink collection for a frame
+   */
+  class Collector {
+    constructor () {
+      this.ignore = [
+        &apos;#&apos;,
+        &apos;about:&apos;,
+        &apos;data:&apos;,
+        &apos;mailto:&apos;,
+        &apos;javascript:&apos;,
+        &apos;js:&apos;,
+        &apos;{&apos;,
+        &apos;*&apos;,
+        &apos;ftp:&apos;,
+        &apos;tel:&apos;
+      ]
+      this.good = {
+        &apos;http:&apos;: true,
+        &apos;https:&apos;: true
+      }
+      this.ilen = this.ignore.length
+      this.outlinks = []
+      this.links = []
+      this.linksSeen = new Set()
+      this.urlParer = new window.URL(&apos;about:blank&apos;)
+      this.urlParts = /^(https?:\/\/)?([^/]*@)?(.+?)(:\d{2,5})?([/?].*)?$/
+      this.dot = /\./g
+    }
+
+    static extractLinks () {
+      const collector = new Collector()
+      return collector.getOutlinks()
+    }
+
+    /**
+     * @desc Determines if the supplied URL is to be ignored or not
+     * @param {string} test - A URL
+     * @return {boolean}
+     */
+    shouldIgnore (test) {
+      let ignored = false
+      for (let i = 0; i &lt; this.ilen; ++i) {
+        if (test.startsWith(this.ignore[i])) {
+          ignored = true
+          break
+        }
+      }
+      if (!ignored) {
+        let parsed = true
+        try {
+          this.urlParer.href = test
+        } catch (error) {
+          parsed = false
+        }
+        return !(parsed &amp;&amp; this.good[this.urlParer.protocol])
+      }
+      return ignored
+    }
+
+    /**
+     * @desc Collects the outlink information for a frame
+     * @return {{outlinks: string, links: Array&lt;string&gt;, location: string}}
+     */
+    getOutlinks () {
+      const found = document.querySelectorAll(
+        &apos;a[href],link[href],img[src],script[src],area[href]&apos;
+      )
+      let flen = found.length
+      let elem
+      for (let i = 0; i &lt; flen; ++i) {
+        elem = found[i]
+        switch (elem.nodeName) {
+          case &apos;LINK&apos;:
+            if (elem.href !== &apos;&apos;) {
+              this.outlinks.push(`${elem.href} E link/@href\r\n`)
+            }
+            break
+          case &apos;IMG&apos;:
+            if (elem.src !== &apos;&apos;) {
+              this.outlinks.push(`${elem.src} E =EMBED_MISC\r\n`)
+            }
+            break
+          case &apos;SCRIPT&apos;:
+            if (elem.src !== &apos;&apos;) {
+              this.outlinks.push(`${elem.src} E script/@src\r\n`)
+            }
+            break
+          default:
+            let href = elem.href.trim()
+            if (href !== &apos;&apos; &amp;&amp; href !== &apos; &apos;) {
+              if (!this.shouldIgnore(href) &amp;&amp; !this.linksSeen.has(href)) {
+                this.linksSeen.add(href)
+                this.links.push({
+                  href,
+                  pathname: this.urlParer.pathname,
+                  host: this.urlParer.host
+                })
+              }
+              this.outlinks.push(`outlink: ${href} L a/@href\r\n`)
+            }
+            break
+        }
+      }
+      let location
+      try {
+        location = window.location.href
+      } catch (error) {}
+      return {
+        outlinks: this.outlinks.join(&apos;&apos;),
+        links: this.links,
+        location
+      }
+    }
+  }
+
+  class TopHandler {
+    constructor (collectorRef, messages) {
+      /**
+       * @type {{outlinks: string, links: Array&lt;string&gt;, totalChildren: number}}
+       */
+      this.found = {
+        outlinks: &apos;&apos;,
+        links: [],
+        totalChildren: 0
+      }
+      this.collectorRef = collectorRef
+      this.messages = messages
+      this.done = null
+      this.childSources = []
+      this.childFrames = 0
+      this.countingChildren = true
+      this.to = null
+      this.toStop = false
+      this.go = this.go.bind(this)
+      this.helloFromFrame = this.helloFromFrame.bind(this)
+      this.finished = this.finished.bind(this)
+    }
+
+    /**
+     * @desc Returns a promise that resolves once outlink collection, from top frame and child frames is complete
+     * @return {Promise&lt;{outlinks: string, links: Array&lt;string&gt;, totalChildren: number}&gt;}
+     */
+    prWhenDone () {
+      return new Promise(resolve =&gt; {
+        this.done = resolve
+      })
+    }
+
+    /**
+     * @desc Send the `outlinkcollect` message to all child frames and start the collection timeout
+     */
+    go () {
+      this.countingChildren = false
+      this.found.totalChildren = this.childFrames
+      const cs = this.childSources
+      for (let i = 0; i &lt; cs.length; ++i) {
+        let c = cs[i]
+        if (c &amp;&amp; c.postMessage) {
+          c.postMessage({ type: this.messages.outlinkcollect }, &apos;*&apos;)
+        }
+      }
+      this.to = setTimeout(this.finished, 20000)
+    }
+
+    /**
+     * @desc Listens for the `outlinkgot` message sent by each child frame that contains its outlink information
+     */
+    helloFromFrame (e) {
+      if (e.data) {
+        if (
+          e.data.type === this.messages.indicateIsChild &amp;&amp;
+          e.origin &amp;&amp;
+          e.origin !== &apos;null&apos; &amp;&amp;
+          this.countingChildren
+        ) {
+          this.childFrames += 1
+          this.childSources.push(e.source)
+        } else if (e.data.type === this.messages.outlinkgot) {
+          this.found.outlinks += e.data.outlinks.outlinks
+          this.found.links = this.found.links.concat(e.data.outlinks.links)
+          this.childFrames -= 1
+          if (this.childFrames === 0 &amp;&amp; !this.toStop) {
+            this.finished()
+          }
+        }
+      }
+    }
+
+    /**
+     * @desc Called once child frame outlink collection is complete. Collects the top frames outlinks and
+     * resolves the Promise that is being awaited by the crawler with the values of all outlinks collected
+     */
+    finished () {
+      if (this.to) {
+        clearTimeout(this.to)
+      }
+      this.to = null
+      this.toStop = true
+      const { links, outlinks, location } = this.collectorRef.extractLinks()
+      this.found.outlinks += outlinks
+      this.found.location = location
+      this.found.links = this.found.links.concat(links)
+      this.done(this.found)
+    }
+  }
+
+  /**
+   * @type {{indicateIsChild: string, outlinkcollect: string, outlinkgot: string}}
+   */
+  const m = {
+    indicateIsChild: &apos;$$$$Squidwarc$$IsChild$$$$&apos;,
+    outlinkcollect: &apos;$$$$Squidwarc$$CollectOutLinks$$$$&apos;,
+    outlinkgot: &apos;$$$$Squidwarc$$GotOutlinks$$$$&apos;
+  }
+
+  if (!isIframe) {
+    Object.defineProperty(window, &apos;$$$$Squidwarc$$Collector$$$$&apos;, {
+      enumerable: false,
+      configurable: false,
+      value: new TopHandler(Collector, m)
+    })
+    window.addEventListener(
+      &apos;message&apos;,
+      window.$$$$Squidwarc$$Collector$$$$.helloFromFrame,
+      false
+    )
+  } else {
+    const mhc = function messageHandlerChild (e) {
+      if (e.data &amp;&amp; e.data.type === m.outlinkcollect) {
+        let outlinks
+        try {
+          outlinks = Collector.extractLinks()
+        } catch (e) {
+          outlinks = {
+            error: e.toString(),
+            outlinks: &apos;&apos;,
+            links: [],
+            location: window.location.href
+          }
+        }
+        window.top.postMessage({ type: m.outlinkgot, outlinks }, &apos;*&apos;)
+      }
+    }
+    window.addEventListener(&apos;message&apos;, mhc, false)
+    window.top.postMessage({ type: m.indicateIsChild }, &apos;*&apos;)
+  }
+}
+
+/**
+ * @desc Starts the collection of the outlinks. Use only when {@link initCollectLinks} is pre-injected into every frame
+ * @return {Promise&lt;{outlinks: string, links: Array&lt;string&gt;, location: string}&gt;}
+ */
+exports.collect = function collect () {
+  const prom = window.$$$$Squidwarc$$Collector$$$$.prWhenDone()
+  // defer execution of go
+  Promise.resolve().then(() =&gt; window.$$$$Squidwarc$$Collector$$$$.go())
+  return prom
+}
+
+/**
+ * @desc Builds the WARC outlink metadata information and finds potential links to goto next from a page and build
+ * @return {Promise&lt;{outlinks: string, links: Array&lt;string&gt;}&gt;}
+ */
+exports.outLinks = async function outLinks () {
+  const ignore = [
+    &apos;#&apos;,
+    &apos;about:&apos;,
+    &apos;data:&apos;,
+    &apos;mailto:&apos;,
+    &apos;javascript:&apos;,
+    &apos;js:&apos;,
+    &apos;{&apos;,
+    &apos;*&apos;,
+    &apos;ftp:&apos;,
+    &apos;tel:&apos;
+  ]
+  const good = { &apos;http:&apos;: true, &apos;https:&apos;: true }
+  const outlinks = []
+  const links = []
+  const linksSeen = new Set()
+  const urlParer = new URL(&apos;about:blank&apos;)
+  function shouldIgnore (test) {
+    let ignored = false
+    let i = ignore.length
+    while (i--) {
+      if (test.startsWith(ignore[i])) {
+        ignored = true
+        break
+      }
+    }
+    if (!ignored) {
+      let parsed = true
+      try {
+        urlParer.href = test
+      } catch (error) {
+        parsed = false
+      }
+      return !(parsed &amp;&amp; good[urlParer.protocol])
+    }
+    return ignored
+  }
+
+  const found = document.querySelectorAll(
+    &apos;a[href],link[href],img[src],script[src],area[href]&apos;
+  )
+  let elem
+  let i = found.length
+  while (i--) {
+    elem = found[i]
+    switch (elem.nodeName) {
+      case &apos;LINK&apos;:
+        if (elem.href !== &apos;&apos;) {
+          outlinks.push(`${elem.href} E link/@href\r\n`)
+        }
+        break
+      case &apos;IMG&apos;:
+        if (elem.src !== &apos;&apos;) {
+          outlinks.push(`${elem.src} E =EMBED_MISC\r\n`)
+        }
+        break
+      case &apos;SCRIPT&apos;:
+        if (elem.src !== &apos;&apos;) {
+          outlinks.push(`${elem.src} E script/@src\r\n`)
+        }
+        break
+      default:
+        let href = elem.href.trim()
+        if (href !== &apos;&apos; &amp;&amp; href !== &apos; &apos;) {
+          if (!shouldIgnore(href) &amp;&amp; !linksSeen.has(href)) {
+            linksSeen.add(href)
+            links.push({
+              href,
+              pathname: urlParer.pathname,
+              host: urlParer.host
+            })
+          }
+          outlinks.push(`outlink: ${href} L a/@href\r\n`)
+        }
+        break
+    }
+  }
+  return {
+    outlinks: outlinks.join(&apos;&apos;),
+    links: links
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

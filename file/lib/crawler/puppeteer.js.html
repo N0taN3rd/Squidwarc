@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/crawler/puppeteer.js | Squidwarc</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Squidwarc"><meta property="twitter:description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/N0taN3rd/Squidwarc"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-runPromise">runPromise</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/config/index.js~Config.html">Config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ChromeOptions">ChromeOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-CrawlConfig">CrawlConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-CrawlControl">CrawlControl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UserScript">UserScript</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-VersionInfo">VersionInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WARCOptions">WARCOptions</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#crawler">crawler</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/chrome.js~ChromeCrawler.html">ChromeCrawler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/helper.js~Helper.html">Helper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/navigationMan.js~NavigationMan.html">NavigationMan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/netIdleWatcher.js~NetIdleWatcher.html">NetIdleWatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/crawler/puppeteer.js~PuppeteerCrawler.html">PuppeteerCrawler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NetIdleOptions">NetIdleOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://pptr.dev/#?product=Puppeteer&amp;version=v1.7.0&amp;show=api-class-page">Page</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#frontier">frontier</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/helper.js~FrontierHelper.html">FrontierHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/index.js~Frontier.html">Frontier</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/frontier/seedTracker.js~SeedTracker.html">SeedTracker</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Seed">Seed</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#injectmanager">injectManager</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/injectManager/index.js~InjectManager.html">InjectManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-OnLoadInject">OnLoadInject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-OnNewDocumentInject">OnNewDocumentInject</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#injectmanager-pageinjects">injectManager/pageInjects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-collect">collect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initCollectLinks">initCollectLinks</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-outLinks">outLinks</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-noNaughtyJS">noNaughtyJS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scrollOnLoad">scrollOnLoad</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scrollPage">scrollPage</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#launcher">launcher</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/launcher/chrome.js~ChromeLauncher.html">ChromeLauncher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/launcher/chromeFinder.js~ChromeFinder.html">ChromeFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-launch">launch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/cyrus-and/chrome-remote-interface">CRI</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#runners">runners</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chromeRunner">chromeRunner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-puppeteerRunner">puppeteerRunner</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/utils/colorPrinters.js~ColorPrinters.html">ColorPrinters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/utils/warcNaming.js~WARCNaming.html">WARCNaming</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isEmptyPlainObject">isEmptyPlainObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-delay">delay</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-makeRunnable">makeRunnable</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/crawler/puppeteer.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ Squidwarc  Copyright (C) 2017-present  John Berlin &lt;n0tan3rd@gmail.com&gt;
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ Squidwarc is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this Squidwarc.  If not, see &lt;http://www.gnu.org/licenses/&gt;
+ */
+const EventEmitter = require(&apos;eventemitter3&apos;)
+const { Browser } = require(&apos;puppeteer/lib/Browser&apos;)
+const { TimeoutError } = require(&apos;puppeteer/lib/Errors&apos;)
+const autobind = require(&apos;class-autobind&apos;)
+const PuppeteerCDPRequestCapturer = require(&apos;../../node-warc/lib/requestCapturers/puppeteerCDP&apos;)
+const PuppeteerCDPWARCGenerator = require(&apos;../../node-warc/lib/writers/puppeteerCDP&apos;)
+const InjectManager = require(&apos;../injectManager&apos;)
+const launch = require(&apos;../launcher/puppeteer&apos;)
+const NetIdle = require(&apos;./netIdleWatcher&apos;)
+const cp = require(&apos;../utils/colorPrinters&apos;)
+const { configureURLNormalizer } = require(&apos;../utils/urlUtils&apos;)
+
+/**
+ * @desc Function for normalizing URLs
+ * @type {(function(string): string)}
+ */
+const urlNormalizer = configureURLNormalizer({ stripFragment: true, stripWWW: true })
+
+/**
+ * @desc Crawler based on puppeteer
+ * @extends {EventEmitter}
+ */
+class PuppeteerCrawler extends EventEmitter {
+  /**
+   * @desc Create a new PuppeteerCrawler instance. For a description of the expected options see the
+   * JSDoc CrawlConfig typedef {@link CrawlConfig}
+   * @param {CrawlConfig} options - The crawl config for this crawl
+   */
+  constructor (options) {
+    super()
+
+    /**
+     * @desc An instance of puppeteer Browser
+     * @type {?Browser}
+     */
+    this._browser = null
+
+    /**
+     * @desc An instance of puppeteer Page
+     * @type {?Page}
+     */
+    this._page = null
+
+    /**
+     * @desc An instance of puppeteer CDPSession used to
+     * @type {CDPSession}
+     * @private
+     */
+    this._client = null
+
+    /**
+     * @desc The UserAgent string of the browser
+     * @type {string}
+     * @private
+     */
+    this._ua = &apos;&apos;
+
+    /**
+     * @desc The current url the crawler is visiting
+     * @type {?string}
+     */
+    this._currentUrl = null
+
+    /**
+     * @desc Crawl configuration options
+     * @type {CrawlConfig}
+     */
+    this.options = options
+
+    /**
+     * @type {?PuppeteerCDPRequestCapturer}
+     */
+    this.requestCapturer = null
+
+    /**
+     * @type {PuppeteerCDPWARCGenerator}
+     * @private
+     */
+    this._warcGenerator = new PuppeteerCDPWARCGenerator()
+
+    /**
+     * @desc Default wait time for page.goto
+     * @type {{waitUntil: string, timeout: number}}
+     */
+    this.defaultWait = { waitUntil: &apos;networkidle0&apos;, timeout: 60000 }
+    autobind.default(this, PuppeteerCrawler.prototype)
+  }
+
+  /**
+   * @desc CB used to emit the disconnected event
+   * @private
+   */
+  _onDisconnected () {
+    this.emit(&apos;disconnected&apos;)
+  }
+
+  /**
+   * @desc Setup the crawler
+   */
+  async init () {
+    this._browser = await launch(this.options.chrome)
+    this._browser.on(Browser.Events.Disconnected, this._onDisconnected)
+    this._page = await this._browser.newPage()
+    this._client = this._page._client
+
+    await this._client.send(&apos;Animation.setPlaybackRate&apos;, { playbackRate: 1000 })
+    await this._client.send(&apos;Network.setBypassServiceWorker&apos;, { bypass: true })
+    await this._client.send(
+      &apos;Page.addScriptToEvaluateOnNewDocument&apos;,
+      InjectManager.getNoNaughtyJsInject()
+    )
+    // so much noise
+    this._client.removeAllListeners(&apos;Performance.metrics&apos;)
+    this._client.removeAllListeners(&apos;Log.entryAdded&apos;)
+    this._client.removeAllListeners(&apos;Runtime.consoleAPICalled&apos;)
+    this._client.removeAllListeners(&apos;Runtime.exceptionThrown&apos;)
+
+    this.requestCapturer = new PuppeteerCDPRequestCapturer()
+    this.requestCapturer.attach(this._client)
+    this._warcGenerator.on(&apos;finished&apos;, this._onWARCGenFinished)
+    this._warcGenerator.on(&apos;error&apos;, this._onWARCGenError)
+    this._ua = await this.getUserAgent()
+  }
+
+  /**
+   * @desc Navigate the browser to the URL of the page to be crawled
+   * @param {string} url
+   * @returns {Promise&lt;boolean&gt;}
+   */
+  async navigate (url) {
+    this._currentUrl = url
+    this.requestCapturer.startCapturing()
+    try {
+      await this._page.goto(url, this.defaultWait)
+    } catch (e) {
+      if (e instanceof TimeoutError) {
+        const mainFrame = this._page.mainFrame()
+        if (
+          urlNormalizer(url) ===
+          urlNormalizer(mainFrame._navigationURL || mainFrame.url())
+        ) {
+          // we did navigate to the page but no all frame network idle was had in the waiting time
+          return true
+        }
+      }
+      cp.error(&apos;Crawler encountered a navigation error&apos;, e)
+      return false
+    }
+    return true
+  }
+
+  /**
+   * @desc If the user supplied a script that scrip is executed or if non was supplied just scroll the page
+   * @return {Promise&lt;void&gt;}
+   */
+  async runUserScript () {
+    if (this.options.script) {
+      cp.cyan(`Running user script`)
+      try {
+        await this.options.script(this._page)
+      } catch (e) {
+        cp.error(&apos;An exception was thrown while running the user script&apos;, e)
+      }
+    } else {
+      await this._page.evaluate(InjectManager.rawScoll())
+    }
+    await NetIdle.idlePromise(this._page, this.options.crawlControl)
+  }
+
+  /**
+   * @desc Equivalent to hitting the refresh button when it is an X
+   * @return {!Promise&lt;?Object&gt;}
+   */
+  stopPageLoading () {
+    return this._client.send(&apos;Page.stopLoading&apos;)
+  }
+
+  /**
+   * @desc Stop capturing the current web pages network requests
+   */
+  stopCapturingNetwork () {
+    this.requestCapturer.stopCapturing()
+  }
+
+  /**
+   * @desc Stop the page loading and stop capturing requests
+   * @return {!Promise&lt;?Object&gt;}
+   */
+  stop () {
+    this.requestCapturer.stopCapturing()
+    return this._client.send(&apos;Page.stopLoading&apos;)
+  }
+
+  /**
+   * @desc Stop crawling and exit
+   * @return {Promise&lt;void&gt;}
+   */
+  async shutdown () {
+    this.requestCapturer.stopCapturing()
+    await this._browser.close()
+  }
+
+  /**
+   * @desc Initialize the WARC writter for writting a new WARC
+   * @param {string} warcPath           - the path to the new WARC
+   * @param {boolean} [appending=false] - append to an already existing WARC file
+   * @return {Promise&lt;void&gt;} A Promise that resolves once the `warc-gen-finished` event is emitted
+   */
+  initWARC (warcPath, appending = false) {
+    this._warcGenerator.initWARC(warcPath, appending)
+    return new Promise(resolve =&gt; {
+      this.on(&apos;warc-gen-finished&apos;, resolve)
+    })
+  }
+
+  /**
+   * @desc Alias for {@link genWarc}
+   * @param {Object} warcInfo    - WARC record information
+   * @property {!string} outlinks - Pre-formatted string containing the pages outlinks tobe used by the WARC metadata record
+   * @property {?Object} info     - Information for the WARC info record
+   * @return {Promise&lt;void, Error&gt;}
+   */
+  genWARC (warcInfo) {
+    return this.genWarc(warcInfo)
+  }
+
+  /**
+   * @desc Generate the WARC file
+   * @param {Object} warcInfo          - WARC record information
+   * @property {!string} outlinks - Pre-formatted string containing the pages outlinks tobe used by the WARC metadata record
+   * @property {?Object} info     - Information for the WARC info record
+   * @return {Promise&lt;void, Error&gt;}
+   */
+  async genWarc ({ outlinks, info }) {
+    info = info || {}
+    info.isPartOfV = info.isPartOfV || this.options.versionInfo.isPartOfV
+    info.warcInfoDescription =
+      info.warcInfoDescription || this.options.versionInfo.warcInfoDescription
+    await this._warcGenerator.writeWarcInfoRecord(
+      info.isPartOfV,
+      info.warcInfoDescription,
+      this._ua
+    )
+    await this._warcGenerator.writeWarcMetadataOutlinks(this._currentUrl, outlinks)
+    this.requestCapturer.stopCapturing()
+    for (let nreq of this.requestCapturer.iterateRequests()) {
+      try {
+        await this._warcGenerator.generateWarcEntry(nreq, this._client)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    this._warcGenerator.end()
+  }
+
+  /**
+   * @desc Generate the WARC Info and Metadata records
+   * @param {Object} warcInfo    - WARC record information
+   * @property {!string} outlinks - Pre-formatted string containing the pages outlinks tobe used by the WARC metadata record
+   * @property {?Object} info     - Information for the WARC info record
+   * @return {!Promise&lt;void&gt;}
+   */
+  async genInfoMetaDataRecord ({ info, outlinks }) {
+    info = info || {}
+    info.v = info.v || this.options.versionInfo.v
+    info.isPartOfV = info.isPartOfV || this.options.versionInfo.isPartOfV
+    info.warcInfoDescription =
+      info.warcInfoDescription || this.options.versionInfo.warcInfoDescription
+    await this._warcGenerator.writeWarcInfoRecord(
+      info.isPartOfV,
+      info.warcInfoDescription,
+      this._ua
+    )
+    await this._warcGenerator.writeWarcMetadataOutlinks(this._currentUrl, outlinks)
+  }
+
+  /**
+   * @desc Retrieve the page&apos;s meta information
+   * @return {Promise&lt;{outlinks: string, links: Array&lt;{href: string, pathname: string, host: string}&gt;, location: string}, Error&gt;}
+   */
+  async getOutLinks () {
+    const frames = this._page.frames()
+    let i = frames.length
+    let frame
+    const discoveredLinks = {
+      outlinks: &apos;&apos;,
+      links: [],
+      location: this._page.url()
+    }
+    const outlinksFN = InjectManager.rawOutLinks()
+    while (i--) {
+      frame = frames[i]
+      try {
+        const { outlinks, links } = await frame.evaluate(outlinksFN)
+        discoveredLinks.outlinks += outlinks
+        discoveredLinks.links = discoveredLinks.links.concat(links)
+      } catch (e) {}
+    }
+    return discoveredLinks
+  }
+
+  /**
+   * @desc Retrieve the browsers user-agent string
+   * @return {!Promise&lt;string&gt;}
+   */
+  async getUserAgent () {
+    let ua = await this._browser.userAgent()
+    if (ua.indexOf(&apos;HeadlessChrome/&apos;) !== -1) {
+      // We are not a robot, pinkie promise!
+      ua = ua.replace(&apos;HeadlessChrome/&apos;, &apos;Chrome/&apos;)
+      await this._page.setUserAgent(ua)
+    }
+    return ua
+  }
+
+  /**
+   * @desc Iterate over the captured network requests for the current web page
+   * @return {Iterator&lt;CapturedRequest&gt;}
+   */
+  [Symbol.iterator] () {
+    return this.requestCapturer.values()
+  }
+
+  /**
+   * @desc Listener for warc generator error
+   * @param {Error} err - The error to emit
+   * @private
+   */
+  _onWARCGenError (err) {
+    this.emit(&apos;error&apos;, { type: &apos;warc-gen&apos;, err })
+  }
+
+  /**
+   * @desc Listener for warc generator finished
+   * @private
+   */
+  _onWARCGenFinished () {
+    this.emit(&apos;warc-gen-finished&apos;)
+  }
+}
+
+/**
+ * @type {PuppeteerCrawler}
+ */
+module.exports = PuppeteerCrawler
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual | Squidwarc</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Squidwarc"><meta property="twitter:description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."></head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/N0taN3rd/Squidwarc"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#out-of-the-box-crawls" data-ice="link">Out Of The Box Crawls</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page-only" data-ice="link">Page Only</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page---same-domain-links" data-ice="link">Page + Same Domain Links</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page---links" data-ice="link">Page + Links</a></li>
+<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#installation" data-ice="link">Installation</a></li>
+<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#usage" data-ice="link">Usage</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/configuration.html"><a href="manual/configuration.html" data-ice="link">Crawl Configuration</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/configuration.html"><a href="manual/configuration.html#required-fields" data-ice="link">Required fields</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#seeds" data-ice="link">seeds</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/configuration.html"><a href="manual/configuration.html#optional-fields" data-ice="link">Optional fields</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#use" data-ice="link">use</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#mode" data-ice="link">mode</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#page-only" data-ice="link">page-only</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#page-same-domain" data-ice="link">page-same-domain</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#page-all-links" data-ice="link">page-all-links</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#depth" data-ice="link">depth</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#headless" data-ice="link">headless</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#script" data-ice="link">script</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#warc" data-ice="link">warc</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#naming" data-ice="link">naming</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#output" data-ice="link">output</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#append" data-ice="link">append</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#connect" data-ice="link">connect</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#host" data-ice="link">host</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#port" data-ice="link">port</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#launch" data-ice="link">launch</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#executable" data-ice="link">executable</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#userdatadir" data-ice="link">userDataDir</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#crawlcontrol" data-ice="link">crawlControl</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#globalwait" data-ice="link">globalWait</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#numinflight" data-ice="link">numInflight</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#inflightidle" data-ice="link">inflightIdle</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#navwait" data-ice="link">navWait</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="out-of-the-box-crawls">Out Of The Box Crawls</h1><h3 id="page-only">Page Only</h3><p>Preserve the only the page, no links are followed</p>
+<h3 id="page---same-domain-links">Page + Same Domain Links</h3><p>Page Only option plus preserve all links found on the page that are on the same domain as the page</p>
+<h3 id="page---links">Page + Links</h3><p>Page + Same Domain Link option plus all links from other domains</p>
+<p>For more information about the configuring a crawl using one of these modes, please see the description for the
+<a href="./manual/configuration.html#mode">mode</a> field of a crawls config file.</p>
+<h1 id="installation">Installation</h1><p>Requirements: <a href="https://nodejs.org/en/">Node.js</a></p>
+<pre><code class="lang-shell"><code class="source-code prettyprint">git clone https://github.com/N0taN3rd/Squidwarc.git
+
+cd Squidwarc
+
+./boostrap.sh</code>
+</code></pre>
+<p>If Docker is more your thing, then Squidwarc provides docker and compose file for your use.</p>
+<h1 id="usage">Usage</h1><p>To launch a crawl you can execute either</p>
+<ul>
+<li><code>./run-crawler.sh -c conf.json</code></li>
+<li><code>node index.js -c conf.json</code></li>
+</ul>
+<p>Docker usage:</p>
+<p>Modify <code>volumes</code> field of the included docker-compose file to a local directory and place the crawl configuration file in it.</p>
+<p>Please set the <code>warc</code> sub-field <code>output</code> to <code>./warcs</code> and then execute <code>docker-compose up</code> to launch the crawl!</p>
+<p>For more information about the configuration file, please see the <a href="./manual/configuration.html">Crawl Configuration</a> section of this manual.</p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

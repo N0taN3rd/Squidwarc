@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual | Squidwarc</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Squidwarc"><meta property="twitter:description" content="A high fidelity, user scriptable, archival crawler that uses Chrome with/without a head."></head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/N0taN3rd/Squidwarc"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#out-of-the-box-crawls" data-ice="link">Out Of The Box Crawls</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page-only" data-ice="link">Page Only</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page---same-domain-links" data-ice="link">Page + Same Domain Links</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/overview.html"><a href="manual/overview.html#page---links" data-ice="link">Page + Links</a></li>
+<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#installation" data-ice="link">Installation</a></li>
+<li data-ice="manualNav" class="indent-h1" data-link="manual/overview.html"><a href="manual/overview.html#usage" data-ice="link">Usage</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/configuration.html"><a href="manual/configuration.html" data-ice="link">Crawl Configuration</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/configuration.html"><a href="manual/configuration.html#required-fields" data-ice="link">Required fields</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#seeds" data-ice="link">seeds</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/configuration.html"><a href="manual/configuration.html#optional-fields" data-ice="link">Optional fields</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#use" data-ice="link">use</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#mode" data-ice="link">mode</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#page-only" data-ice="link">page-only</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#page-same-domain" data-ice="link">page-same-domain</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#page-all-links" data-ice="link">page-all-links</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#depth" data-ice="link">depth</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#headless" data-ice="link">headless</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#script" data-ice="link">script</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#warc" data-ice="link">warc</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#naming" data-ice="link">naming</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#output" data-ice="link">output</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#append" data-ice="link">append</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#connect" data-ice="link">connect</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#host" data-ice="link">host</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#port" data-ice="link">port</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#launch" data-ice="link">launch</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#executable" data-ice="link">executable</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#userdatadir" data-ice="link">userDataDir</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration.html"><a href="manual/configuration.html#crawlcontrol" data-ice="link">crawlControl</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#globalwait" data-ice="link">globalWait</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#numinflight" data-ice="link">numInflight</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#inflightidle" data-ice="link">inflightIdle</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/configuration.html"><a href="manual/configuration.html#navwait" data-ice="link">navWait</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="crawl-configuration">Crawl Configuration</h1><p>Squidwarc uses <code>json</code> file format for its crawl configuration.</p>
+<p>The full schema of the configuration file is displayed below, however not all fields are required.</p>
+<pre><code><code class="source-code prettyprint">{
+    use: string
+    mode: string
+    depth: int
+    headless: bool
+    seeds: [string] | string
+    script: path
+    warc: {
+      naming: string
+      output: path
+      append: bool
+      isPartOf: string
+      infoDescription: string
+    }
+    connect: {
+      host: string
+      port: string
+      launch: bool
+      userDataDir: string
+      executable: string
+    }
+    crawlControl: {
+      globalWait: int,
+      inflightIdle: int
+      navWait: int
+      numInflight: int
+    }
+}</code>
+</code></pre><h2 id="required-fields">Required fields</h2><h3 id="seeds">seeds</h3><p>The only field required bu Squidwarc is the <code>seeds</code> field for obvious reasons.</p>
+<p>If any field is left out besides the <code>seeds</code> field Squidwarc will either use the default values, listed below,
+or set the field to a correct value based on the values of other fields.</p>
+<p>The value of this field can be either an array of string (URLs) or a path to an JSON file containing the array of seed URLs</p>
+<h2 id="optional-fields">Optional fields</h2><h3 id="use">use</h3><p>Should Squidwarc use Chrome/Chromium directly or via puppeteer.</p>
+<p>When this field is <code>chrome</code> (default value) then either Chrome/Chromium must be installed and usable.</p>
+<p>If the value of this field is <code>puppeteer</code> then Chrome/Chromium is not required to be installed,
+Squidwarc will ensure a usable version of Chromium is automatically downloaded and used.</p>
+<p>If the value of the <a href="#script">script field</a> is set and the script it points to contains a valid function this value
+is set to <code>puppeteer</code>.</p>
+<ul>
+<li>values: <code>chrome</code> or <code>puppeteer</code></li>
+<li>default: <code>chrome</code></li>
+</ul>
+<hr>
+<h3 id="mode">mode</h3><p>The mode this crawl is to be operating in.</p>
+<ul>
+<li>default: page-only</li>
+</ul>
+<h4 id="page-only">page-only</h4><p>Preserve the only the page, no links are followed</p>
+<ul>
+<li>values: <code>page-only</code> or <code>po</code></li>
+</ul>
+<h4 id="page-same-domain">page-same-domain</h4><p><code>page-only</code> mode plus all links found on the page that are on the same domain as the page</p>
+<ul>
+<li>values: <code>page-same-domain</code> or <code>psd</code></li>
+</ul>
+<h4 id="page-all-links">page-all-links</h4><p><code>page-only</code> mode plus all links found on the page</p>
+<ul>
+<li>values: <code>page-all-links</code> or <code>pal</code></li>
+</ul>
+<hr>
+<h3 id="depth">depth</h3><p>The depth of this crawl (how many pages out from a starting seed should be crawled)</p>
+<ul>
+<li>default: 1</li>
+</ul>
+<hr>
+<h3 id="headless">headless</h3><p>Should the browser launched and used by Squidwarc be in headless mode</p>
+<ul>
+<li>default: true</li>
+</ul>
+<hr>
+<h3 id="script">script</h3><p>A path to script (js file) to be executed per page, causes the value of <a href="#use"><code>use</code></a> to be set to <code>puppeteer</code>.</p>
+<p>The js file the <code>script</code> field points to is expected to export a single <code>async function</code> that accepts one argument:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">module.exports = async function (page) { .... }</code>
+</code></pre>
+<p>Because Squidwarc requires the file to be a Node.js module that exports a single <code>async function</code>,
+the script has full access to the <a href="https://nodejs.org/dist/latest-v10.x/docs/api/">Node.js API</a>.</p>
+<p>When Squidwarc executes this function, Squidwarc will pass it the <a href="https://pptr.dev/#?product=Puppeteer&amp;version=v1.7.0&amp;show=api-class-page">puppeteer Page</a>
+object for the page being crawled.</p>
+<p>Squidwarc will then wait for the Promise returned by the function to resolve and the network to idle before WARC generation begins.</p>
+<p>An example script is provided called <a href="https://github.com/N0taN3rd/Squidwarc/blob/master/userFns.js">userFns.js</a> found in the root of this project.</p>
+<p><strong>Squidwarc is not responsible for ill-behaved scripts</strong></p>
+<hr>
+<h3 id="warc">warc</h3><p>Options for how the crawls WARCs should be created</p>
+<h4 id="naming">naming</h4><p>The naming scheme to be used for WARC generation</p>
+<p>Scheme url</p>
+<ul>
+<li>warcs will be created named <code>[url crawled]-datetime</code>.warc</li>
+<li>and <code>append = true</code> warcs will be created named <code>[first crawled url]-datetime</code>.warc</li>
+</ul>
+<p>The only other value accepted is a file name to be used, this will cause <a href="#append">append</a> to be set to true.</p>
+<p>Squidwarc will ensure the URLs used apart of filenames will be a valid file name.</p>
+<ul>
+<li>default: url</li>
+</ul>
+<h4 id="output">output</h4><p>Path to the directory the WARCs are to be created in</p>
+<ul>
+<li>default: current working directory</li>
+</ul>
+<h4 id="append">append</h4><p>Should Squidwarc create a single WARC file for the crawl or a WARC file per page crawled</p>
+<ul>
+<li>default: false</li>
+</ul>
+<hr>
+<h3 id="connect">connect</h3><p>Information about how to connect to or launch Chrome/Chromium</p>
+<h4 id="host">host</h4><p>The host name the browsers CDP endpoint is listing on</p>
+<ul>
+<li>default: localhost</li>
+</ul>
+<h4 id="port">port</h4><p>The port number the browsers CDP endpoint is listing on</p>
+<ul>
+<li>default: 9222</li>
+</ul>
+<h4 id="launch">launch</h4><p>Should Squidwarc launch and manage the browser or connect to an already running instance.</p>
+<p>If this value is set to true and <a href="#executable">executable</a> is not set, Squidwarc will attempt to find a usable executable
+when <a href="#use">use</a> = <code>chrome</code>.</p>
+<ul>
+<li>default: true</li>
+</ul>
+<h4 id="executable">executable</h4><p>Path to the browser executable or command to be used to launch the browser</p>
+<p>If this value is set and <a href="#launch">launch</a> is <code>true</code>, Squidwarc will use this value rather than attempting to find
+an usable executable.</p>
+<h4 id="userdatadir">userDataDir</h4><p>Path to a user data directory to be used rather than a temporary one.</p>
+<p>This field is useful when you want to preserve a page that is behind authentication and
+you are already signed in and view that page using your local version of Chrome/Chromium.</p>
+<p>It is recommended to use the full path to the user data directory to ensure 100% usability.</p>
+<p>On Linux the default location is in ~/.config:</p>
+<ul>
+<li>[Chrome Stable] ~/.config/google-chrome</li>
+<li>[Chrome Beta] ~/.config/google-chrome-beta</li>
+<li>[Chrome Dev] ~/.config/google-chrome-unstable</li>
+<li>[Chromium] ~/.config/chromium</li>
+</ul>
+<p>On Mac OS X the default location is in the Application Support folder:</p>
+<ul>
+<li>[Chrome] ~/Library/Application Support/Google/Chrome</li>
+<li>[Chrome Canary] ~/Library/Application Support/Google/Chrome Canary</li>
+<li>[Chromium] ~/Library/Application Support/Chromium</li>
+</ul>
+<p>On Windows the default location is in the local app data folder:</p>
+<ul>
+<li>[Chrome] %LOCALAPPDATA%\Google\Chrome\User Data</li>
+<li>[Chrome Canary] %LOCALAPPDATA%\Google\Chrome SxS\User Data</li>
+<li>[Chromium] %LOCALAPPDATA%\Chromium\User Data</li>
+</ul>
+<hr>
+<h3 id="crawlcontrol">crawlControl</h3><p>Options for fine tuning the crawl</p>
+<h4 id="globalwait">globalWait</h4><p>Maximum amount of time, in milliseconds, that Squidwarc should wait
+before generating a WARC and moving to the next URL.</p>
+<ul>
+<li>default: 60000</li>
+</ul>
+<h4 id="numinflight">numInflight</h4><p>The number of inflight requests (requests with no response) that should
+exist before starting the inflightIdle timer.</p>
+<ul>
+<li>default: 2</li>
+</ul>
+<h4 id="inflightidle">inflightIdle</h4><p>Amount of time, in milliseconds, that should elapse when there are only
+numInflight requests for network idle to be determined.</p>
+<ul>
+<li>default: 1000</li>
+</ul>
+<h4 id="navwait">navWait</h4><p>Maximum amount of time, in milliseconds, that Squidwarc should wait for
+indication that the browser has navigated to the page being crawled.</p>
+<ul>
+<li>default: 8000</li>
+</ul>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
