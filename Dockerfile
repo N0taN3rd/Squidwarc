@@ -38,7 +38,8 @@ WORKDIR /Squidwarc
 
 RUN ./bootstrap.sh
 
-VOLUME /Squidwarc
+RUN mkdir warcs
+VOLUME /Squidwarc/warcs
 
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["node", "index.js", "-c", "conf.json"]
+CMD ["node", "index.js", "-c", "warcs/conf.json"]

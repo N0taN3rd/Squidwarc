@@ -2,7 +2,6 @@
 
 git submodule init
 git submodule update
-yarn install
+npm install
 cd node-warc
-yarn install
-cd ..
+npm install

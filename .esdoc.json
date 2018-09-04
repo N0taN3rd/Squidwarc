@@ -23,8 +23,7 @@
           "globalIndex": true,
           "files": [
             "./manual/overview.md",
-            "./manual/configuration.md",
-            "./manual/faq.md"
+            "./manual/configuration.md"
           ]
         }
       }
