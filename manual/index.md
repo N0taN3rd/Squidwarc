@@ -28,7 +28,7 @@ git clone https://github.com/N0taN3rd/Squidwarc.git
 
 cd Squidwarc
 
-./boostrap.sh
+./bootstrap.sh
 
 ./run-crawl.sh -c conf.json
 ```
