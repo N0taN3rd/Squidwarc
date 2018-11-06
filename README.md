@@ -43,9 +43,27 @@ Page + Same Domain Link option plus all links from other domains
 
 # Usage
 
-Run `npm install` or `yarn` before continuing in order to install the dependencies for this project.   
+**Squidwarc** uses a bootstrapping script to install dependencies. First, get the latest version from source:
 
-Once the dependencies have been installed you can execute `$ ./run-crawler.sh -c conf.json` or `$ node index.js -c conf.json` to start crawling!
+```
+$ git clone https://github.com/N0taN3rd/Squidwarc
+$ cd Squidwarc
+```
+Then run the [bootstrapping script](https://github.com/N0taN3rd/Squidwarc/blob/master/bootstrap.sh) to install the dependencies:
+```
+$ ./bootstrap.sh
+```
+
+Once the dependencies have been installed you can start a pre-configured (but customizable) crawl with either:
+
+```
+$ ./run-crawler.sh -c conf.json
+```
+or:
+```
+$ node index.js -c conf.json
+```
+
 
 ### Config file
 The `config.json` file example below is provided for you without annotations as the annotations (comments) are not valid `json`
