@@ -22,7 +22,7 @@ For more information about this see
 **Squidwarc** is built using Node.js, [node-warc](https://github.com/N0taN3rd/node-warc), and [chrome-remote-interface](https://github.com/cyrus-and/chrome-remote-interface).
 
 If running a crawler through the commandline is not your thing, then **Squidwarc** highly recommends [warcworker](https://github.com/peterk/warcworker),
-a web front end for **Squidwar** by [@peterk](https://github.com/peterk).
+a web front end for **Squidwarc** by [@peterk](https://github.com/peterk).
 
 If you are unable to install Node on your system but have docker, then you can use the provided docker file or compose file.
 
