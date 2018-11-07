@@ -92,7 +92,7 @@ For more detailed  information about the crawl configuration file and its field 
   // must match --remote-debugging-port=<port> set when Squidwarc is connecting to an already running instance of  Chrome.
   // localhost is default host when only setting --remote-debugging-port
   "connect": {
-    "launch": true, // if you want Squidward to attempt to launch the version of Chrome already on your system or not
+    "launch": true, // if you want Squidwarc to attempt to launch the version of Chrome already on your system or not
     "host": "localhost",
     "port": 9222
   },
