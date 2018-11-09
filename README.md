@@ -102,7 +102,7 @@ For more detailed  information about the crawl configuration file and its field 
     "globalWait": 60000, // maximum time spent visiting a page
     "inflightIdle": 1000, // how long to wait for until network idle is determined when there are only `numInflight` (no response recieved) requests
     "numInflight": 2, // when there are only N inflight (no response recieved) requests start network idle count down
-    "navWait": 8000 // wait at maxium 8s for Chrome to navigate to a page
+    "navWait": 8000 // wait at maximum 8 seconds for Chrome to navigate to a page
   }
 }
 ```
