@@ -184,7 +184,7 @@ On Linux the default location is in ~/.config:
 - [Chrome Dev] ~/.config/google-chrome-unstable
 - [Chromium] ~/.config/chromium
 
-On Mac OS X the default location is in the Application Support folder:
+On macOS the default location is in the Application Support folder:
 - [Chrome] ~/Library/Application Support/Google/Chrome
 - [Chrome Canary] ~/Library/Application Support/Google/Chrome Canary
 - [Chromium] ~/Library/Application Support/Chromium
