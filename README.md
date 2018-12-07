@@ -7,7 +7,7 @@
 **Squidwarc** aims to address the need for a high fidelity crawler akin to Heritrix while still being easy enough for the personal archivist to setup and use.
 
 **Squidwarc** does not seek (at the moment) to dethrone Heritrix as the queen of wide archival crawls rather
-seeks to address Heritrix's short comings namely:
+seeks to address Heritrix's shortcomings namely:
 - No JavaScript execution
 - Everything is plain text
 - Requiring configuration to know how to preserve the web
