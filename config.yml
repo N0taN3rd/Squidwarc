@@ -1,0 +1,18 @@
+browser:
+  use: puppeteer
+  headless: true
+  launch: true
+  host: localhost
+  port: 9222
+  executable: google-chrome-stable
+  userDataDir: ~/.config/google-chrome/
+crawlControl:
+  script: ./userFns.js
+  mode: site
+  globalWait: 60000
+  inflightIdle: 1000
+  numInflight: 2
+  navWait: 8000
+seeds:
+  - 'https://www.instagram.com/visit_berlin/'
+crawlId: dcbdc290-0adb-11e9-914f-b500193baea6

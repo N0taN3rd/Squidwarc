@@ -20,5 +20,6 @@
     "inflightIdle": 1000,
     "numInflight": 2,
     "navWait": 8000
-  }
+  },
+  "crawlId": "b4efa2b0-0adb-11e9-9995-8bc771918efb"
 }

@@ -1,4 +1,4 @@
-FROM node:10-stretch
+FROM node:11-stretch
 
 LABEL maintainer="John Berlin <n0tan3rd@gmail.com>"
 
