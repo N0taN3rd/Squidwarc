@@ -6,12 +6,12 @@
 module.exports = async function (page) {
   // scrolls the page until the page cannot be scrolled
   // some more or we have scrolled 25 times and fetches all the srcset values
-  let scrolled = 0
-  for (; scrolled < 25; ++scrolled) {
-    let canScrollMore = await page.evaluate(async function () {
-      window.$SquidwarcSeen = window.$SquidwarcSeen || new Set()
-      const noop = () => {}
-      const srcsetSplit = /\s*(\S*\s+[\d.]+[wx]),|(?:\s*,(?:\s+|(?=https?:)))/
+  await page.evaluate(async function () {
+    window.$SquidwarcSeen = window.$SquidwarcSeen || new Set()
+    const noop = () => {}
+    const srcsetSplit = /\s*(\S*\s+[\d.]+[wx]),|(?:\s*,(?:\s+|(?=https?:)))/
+    let scrolled = 0
+    for (; scrolled < 25; ++scrolled) {
       const ss = document.querySelectorAll('*[srcset], *[data-srcset], *[data-src]')
       const fetches = []
       for (let i = 0; i < ss.length; i++) {
@@ -42,13 +42,12 @@ module.exports = async function (page) {
       }
       await Promise.all(fetches)
       window.scrollBy(0, 500)
-      return (
+      let canScrollMore =
         window.scrollY + window.innerHeight <
         Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
-      )
-    })
-    // ensure we see all the requests by waiting for a bit before going again if we can
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    if (!canScrollMore) break
-  }
+      // ensure we see all the requests by waiting for a bit before going again if we can
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      if (!canScrollMore) break
+    }
+  })
 }
