@@ -1,4 +1,4 @@
-FROM node:10-stretch
+FROM node:11-stretch
 
 LABEL maintainer="John Berlin <n0tan3rd@gmail.com>"
 
@@ -38,7 +38,8 @@ WORKDIR /Squidwarc
 
 RUN ./bootstrap.sh
 
-VOLUME /Squidwarc
+RUN mkdir warcs
+VOLUME /Squidwarc/warcs
 
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["node", "index.js", "-c", "conf.json"]
+CMD ["node", "index.js", "-c", "warcs/conf.json"]

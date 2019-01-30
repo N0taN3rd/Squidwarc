@@ -4,59 +4,50 @@
  * @return {Promise<void>}
  */
 module.exports = async function (page) {
+  // scrolls the page until the page cannot be scrolled
+  // some more or we have scrolled 25 times and fetches all the srcset values
   await page.evaluate(async function () {
-    let scrollingTO = 2000
-    let lastScrolled = Date.now()
-    let scrollCount = 0
-    let maxScroll = Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight
-    )
-    await new Promise((resolve, reject) => {
-      let scrollerInterval = setInterval(() => {
-        let scrollPos = window.scrollY + window.innerHeight
-        if (scrollCount < 20) {
-          maxScroll = Math.max(
-            document.body.scrollHeight,
-            document.documentElement.scrollHeight
-          )
-          scrollCount += 1
-        }
-        if (scrollPos < maxScroll) {
-          window.scrollBy(0, 200)
-          lastScrolled = Date.now()
-        } else if (!lastScrolled || Date.now() - lastScrolled > scrollingTO) {
-          if (scrollerInterval === undefined) {
-            return
-          }
-          clearInterval(scrollerInterval)
-          scrollerInterval = undefined
-          resolve()
-        } else if (scrollPos >= maxScroll) {
-          clearInterval(scrollerInterval)
-          scrollerInterval = undefined
-          resolve()
-        }
-      }, 200)
-    })
-  })
-  await page.$$eval('*[srcset]', async ss => {
+    window.$SquidwarcSeen = window.$SquidwarcSeen || new Set()
     const noop = () => {}
-    const doFetch = url => fetch(url).catch(noop)
-    const found = []
     const srcsetSplit = /\s*(\S*\s+[\d.]+[wx]),|(?:\s*,(?:\s+|(?=https?:)))/
-    for (let i = 0; i < ss.length; i++) {
-      const srcset = ss[i].srcset
-      const values = srcset.split(srcsetSplit).filter(Boolean)
-      for (let j = 0; j < values.length; j++) {
-        const value = values[j].trim()
-        if (value.length > 0) {
-          const url = value.split(' ')[0]
-          found.push(url)
-          await doFetch(url)
+    let scrolled = 0
+    for (; scrolled < 25; ++scrolled) {
+      const ss = document.querySelectorAll('*[srcset], *[data-srcset], *[data-src]')
+      const fetches = []
+      for (let i = 0; i < ss.length; i++) {
+        if (ss[i].dataset.srcset || ss[i].srcset) {
+          let srcsets = []
+          if (ss[i].srcset) {
+            srcsets = srcsets.concat(ss[i].srcset.split(srcsetSplit))
+          }
+          if (ss[i].dataset.srcset) {
+            srcsets = srcsets.concat(ss[i].dataset.srcset.split(srcsetSplit))
+          }
+          for (let j = 0; j < srcsets.length; j++) {
+            if (srcsets[j]) {
+              const url = srcsets[j].trim().split(' ')[0]
+              if (!window.$SquidwarcSeen.has(url)) {
+                window.$SquidwarcSeen.add(url)
+                fetches.push(fetch(url).catch(noop))
+              }
+            }
+          }
+        }
+        if (ss[i].dataset.src) {
+          if (!window.$SquidwarcSeen.has(ss[i].dataset.src)) {
+            window.$SquidwarcSeen.add(ss[i].dataset.src)
+            fetches.push(fetch(ss[i].dataset.src).catch(noop))
+          }
         }
       }
+      await Promise.all(fetches)
+      window.scrollBy(0, 500)
+      let canScrollMore =
+        window.scrollY + window.innerHeight <
+        Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
+      // ensure we see all the requests by waiting for a bit before going again if we can
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      if (!canScrollMore) break
     }
-    return found
   })
 }
