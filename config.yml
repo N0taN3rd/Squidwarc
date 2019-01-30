@@ -1,0 +1,18 @@
+chrome:
+  use: puppeteer
+  headless: false
+  launch: true
+  host: localhost
+  port: 9222
+crawlControl:
+  script: ./userFns.js
+  mode: site
+  globalWait: 60000
+  inflightIdle: 1000
+  numInflight: 2
+  navWait: 8000
+warc:
+  appending: true
+  naming: awesome.warc
+seeds:
+  - 'https://www.instagram.com/visit_berlin/'
