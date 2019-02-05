@@ -29,6 +29,14 @@ RUN apt-get update && wget -q -O - https://dl-ssl.google.com/linux/linux_signing
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 /usr/local/bin/dumb-init
 RUN chmod +x /usr/local/bin/dumb-init
 
+# Add user so we don't need --no-sandbox.
+RUN groupadd -r squidwarcUser && useradd -r -g squidwarcUser -G audio,video squidwarcUser \
+    && mkdir -p /home/squidwarcUser/Downloads \
+    && chown -R squidwarcUser:squidwarcUser /home/squidwarcUser
+
+# Run everything after as non-privileged user.
+USER squidwarcUser
+
 ARG CACHEBUST=1
 ENV INDOCKER=1
 
