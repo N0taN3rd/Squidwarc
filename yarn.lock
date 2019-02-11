@@ -311,6 +311,13 @@ buffer-from@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
 
+bufferutil@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/bufferutil/-/bufferutil-4.0.1.tgz#3a177e8e5819a1243fe16b63a199951a7ad8d4a7"
+  integrity sha512-xowrxvpxojqkagPcWRQVXZl0YXhRhAtBEIq3VoER1NH5Mw1n1o0ojdspp+GS2J//2gCVyrzQDApQ4unGF+QOoA==
+  dependencies:
+    node-gyp-build "~3.7.0"
+
 builtin-modules@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/builtin-modules/-/builtin-modules-1.1.1.tgz#270f076c5a72c02f5b65a47df94c5fe3a278892f"
@@ -450,15 +457,17 @@ cheerio@1.0.0-rc.2:
     parse5 "^3.0.1"
 
 "chrome-remote-interface-extra@https://github.com/N0taN3rd/chrome-remote-interface-extra.git":
-  version "1.0.3"
-  resolved "https://github.com/N0taN3rd/chrome-remote-interface-extra.git#85afea784b59392458f2a784917cdd8b30716a72"
+  version "0.0.4"
+  resolved "https://github.com/N0taN3rd/chrome-remote-interface-extra.git#d629d9ed1f53914ec17d12102845494704d8e957"
   dependencies:
+    bufferutil "^4.0.1"
     chrome-remote-interface "^0.27.1"
     debug "^4.1.1"
     eventemitter3 "^3.1.0"
     fs-extra "^7.0.1"
     mime "^2.4.0"
     uuid "^3.3.2"
+    ws "^6.1.3"
 
 chrome-remote-interface@^0.27.1:
   version "0.27.1"
@@ -2354,6 +2363,11 @@ node-gyp-build@^3.8.0:
   resolved "https://registry.yarnpkg.com/node-gyp-build/-/node-gyp-build-3.8.0.tgz#0f57efeb1971f404dfcbfab975c284de7c70f14a"
   integrity sha512-bYbpIHyRqZ7sVWXxGpz8QIRug5JZc/hzZH4GbdT9HTZi6WmKCZ8GLvP8OZ9TTiIBvwPFKgtGrlWQSXDAvYdsPw==
 
+node-gyp-build@~3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/node-gyp-build/-/node-gyp-build-3.7.0.tgz#daa77a4f547b9aed3e2aac779eaf151afd60ec8d"
+  integrity sha512-L/Eg02Epx6Si2NXmedx+Okg+4UHqmaf3TNcxd50SF9NQGcJaON3AtU++kax69XV7YWz4tUspqZSAsVofhFKG2w==
+
 node-warc@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/node-warc/-/node-warc-3.2.0.tgz#35735650ac3c3f2ebd7ef0bd266c544e4d11789d"
@@ -3517,6 +3531,13 @@ ws@^6.1.0:
   version "6.1.2"
   resolved "https://registry.yarnpkg.com/ws/-/ws-6.1.2.tgz#3cc7462e98792f0ac679424148903ded3b9c3ad8"
   integrity sha512-rfUqzvz0WxmSXtJpPMX2EeASXabOrSMk1ruMOV3JBTBjo4ac2lDjGGsbQSyxj8Odhw5fBib8ZKEjDNvgouNKYw==
+  dependencies:
+    async-limiter "~1.0.0"
+
+ws@^6.1.3:
+  version "6.1.3"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-6.1.3.tgz#d2d2e5f0e3c700ef2de89080ebc0ac6e1bf3a72d"
+  integrity sha512-tbSxiT+qJI223AP4iLfQbkbxkwdFcneYinM2+x46Gx2wgvbaOMO36czfdfVUBRTHvzAMRhDd98sA5d/BuWbQdg==
   dependencies:
     async-limiter "~1.0.0"
 

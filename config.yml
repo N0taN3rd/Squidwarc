@@ -1,5 +1,5 @@
 chrome:
-  use: puppeteer
+  use: chrome-extra
   headless: false
   launch: true
   host: localhost
