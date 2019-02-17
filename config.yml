@@ -4,6 +4,7 @@ chrome:
   launch: true
   host: localhost
   port: 9222
+  customizer: ./customizer.js
 crawlControl:
   script: ./userFns.js
   mode: site

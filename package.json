@@ -14,7 +14,7 @@
     "bluebird": "^3.5.3",
     "chalk": "^2.4.2",
     "chrome-remote-interface": "^0.27.1",
-    "chrome-remote-interface-extra": "https://github.com/N0taN3rd/chrome-remote-interface-extra.git",
+    "chrome-remote-interface-extra": "^0.0.7",
     "class-autobind": "^0.1.4",
     "commander": "^2.19.0",
     "eventemitter3": "^3.1.0",
@@ -34,10 +34,10 @@
     "untildify": "^3.0.3",
     "uuid": "^3.3.2",
     "validator": "^10.11.0",
-    "yargs": "^12.0.5"
+    "yargs": "^13.2.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^5.0.4",
+    "@types/fs-extra": "^5.0.5",
     "benchmark": "^2.1.4",
     "esdoc": "^1.1.0",
     "esdoc-custom-theme": "^1.4.2",
