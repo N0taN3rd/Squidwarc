@@ -2393,10 +2393,10 @@ node-gyp-build@~3.7.0:
   resolved "https://registry.yarnpkg.com/node-gyp-build/-/node-gyp-build-3.7.0.tgz#daa77a4f547b9aed3e2aac779eaf151afd60ec8d"
   integrity sha512-L/Eg02Epx6Si2NXmedx+Okg+4UHqmaf3TNcxd50SF9NQGcJaON3AtU++kax69XV7YWz4tUspqZSAsVofhFKG2w==
 
-node-warc@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/node-warc/-/node-warc-3.2.0.tgz#35735650ac3c3f2ebd7ef0bd266c544e4d11789d"
-  integrity sha512-VziukrWOHnAuPi/wYDfC3V1514Yej/WzFxOc1qDjGSsoUpthBEro+tVQ/mwbA5oz9wa1EsCBajQRC5y883oAQQ==
+node-warc@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/node-warc/-/node-warc-3.3.1.tgz#49708c85fd193b6db8edf05e839621f34a6623b5"
+  integrity sha512-xDLuU3TK6fq6e79qUkb6cVEthPubKDPBn6xbZfuvaj12WNBIJknIUyevX7BroUYt0QdTtlR91DhbDO94d4tqfw==
   dependencies:
     eventemitter3 "^3.1.0"
     fs-extra "^7.0.1"

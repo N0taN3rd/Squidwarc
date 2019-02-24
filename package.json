@@ -24,7 +24,7 @@
     "lodash": "^4.17.11",
     "mime": "^2.4.0",
     "moment": "^2.24.0",
-    "node-warc": "^3.2.0",
+    "node-warc": "^3.3.1",
     "normalize-url": "^4.1.0",
     "parse-domain": "^2.1.7",
     "pretty-error": "^2.1.1",
