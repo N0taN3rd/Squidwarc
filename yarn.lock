@@ -461,10 +461,10 @@ cheerio@1.0.0-rc.2:
     lodash "^4.15.0"
     parse5 "^3.0.1"
 
-chrome-remote-interface-extra@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/chrome-remote-interface-extra/-/chrome-remote-interface-extra-0.0.7.tgz#9481ac440ef5d5743a849905dc1971707623f381"
-  integrity sha512-KPj8QCvZZmOePFsaM7j7j04f3x1hadhw0Bv4gn/CmNqr17N9bI0F3dt8+gGrNZZqHP9CLTNGdyXPErN1mpNxMQ==
+chrome-remote-interface-extra@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/chrome-remote-interface-extra/-/chrome-remote-interface-extra-0.1.1.tgz#dc7bcee7b98036214d599baf6e4ebcce0447323e"
+  integrity sha512-uEmwcAR1Xqp+pMpcvWtemIy6Ud5/phJPVkpQB8zExYP9qHQouwgdCOcqyvKH00VcOSAJ7Sa9xy9H1pn9DBwMYA==
   dependencies:
     bufferutil "^4.0.1"
     chrome-remote-interface "^0.27.1"
@@ -3613,10 +3613,10 @@ yargs-parser@^13.0.0:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
-yargs@^13.2.0:
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-13.2.0.tgz#8b749168defffe473ec1e7980634aa360518d7e7"
-  integrity sha512-C+2y+DJwm9JIyZqeZtBnXQWAwltzeaWWtWmLdC7mBvs46PZu8a3WOyiKfJX+pEqOfzwH7OljABNwU2XJqftk6g==
+yargs@^13.2.1:
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-13.2.1.tgz#c8888bcf24424bd4e5a834348366f6fcc37bb8d9"
+  integrity sha512-HgY0xHGmPPakg6kEDufqxZuXVtvPZcipORC8O7S44iEnwsUmP+qnhReHc6d1dyeIZkrPmYFblh45Z2oeDn++fQ==
   dependencies:
     cliui "^4.0.0"
     find-up "^3.0.0"
