@@ -1,5 +1,3 @@
-// const PuppeteerPage = require('puppeteer/lib/Page').Page
-// const { Page } = require('chrome-remote-interface-extra')
 
 /**
  * @desc This function can be used to customize the behavior of the browser.
@@ -9,22 +7,22 @@
  *
  * @example
  *  // chrome-remote-interface-extra i.e. chrome-extra
- *  module.exports = async function chromeCustomizer (pageOrClient) {
+ *  module.exports = async function chromeCustomizer (page) {
  *    // set the download path of files downloaded by the browser
- *    await pageOrClient.setDownloadBehavior('<path to new downloads folder>')
+ *    await page.setDownloadBehavior('<path to new downloads folder>')
  *
  *    // set the Accept-Language HTTP header
- *    await pageOrClient.setAcceptLanguage('<new language>')
+ *    await page.setAcceptLanguage('<new language>')
  *
  *    // set navigator.platform
- *    await pageOrClient.setNavigatorPlatform('<new platform>')
+ *    await page.setNavigatorPlatform('<new platform>')
  *
  *    // set new geolocation
- *    await pageOrClient.setGeolocation({longitude: number, latitude: number, accuracy: (number|undefined)})
+ *    await page.setGeolocation({longitude: number, latitude: number, accuracy: (number|undefined)})
  *  }
  *
  * @see https://chromedevtools.github.io/devtools-protocol/tot/
- * @param {Object} pageOrClient
+ * @param {Page} page
  * @return {Promise<void>}
  */
-module.exports = async function chromeCustomizer (pageOrClient) {}
+module.exports = async function chromeCustomizer (page) {}
