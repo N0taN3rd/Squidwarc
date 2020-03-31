@@ -84,7 +84,7 @@ For more detailed  information about the crawl configuration file and its field 
   ],
 
   "warc": {
-    "naming": "url" // currently this is the only option supported do not change.....
+    "naming": "url", // currently this is the only option supported do not change.....
     "append": false // do you want this crawl to use a save all preserved data to a single WARC or WARC per page
   },
 
